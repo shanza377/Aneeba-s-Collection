@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aneeba's Collection</title>
+  <link rel="icon" href="/favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Poppins',sans-serif}
+    h1,h2,h3{font-family:'Playfair Display',serif}
+    #mobileMenu::-webkit-scrollbar{display:none}
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <div class="bg-[#1A1A1A] text-white text-center py-2 text-xs sm:text-sm font-medium px-2">
+    🚚 Fast Delivery | All over Pakistan | Advance Payment Available
+  </div>
+
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="/logo.png" alt="Logo" class="h-8 w-8 sm:h-10 sm:w-10 object-contain">
+        <span class="text-lg sm:text-2xl font-bold text-[#C9A66B]">Aneeba's Collection</span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex gap-6 lg:gap-8 text-gray-700 font-medium">
+        <li><a href="index.html" class="hover:text-[#C9A66B] transition">Home</a></li>
+
+        <!-- Dresses Dropdown -->
+        <li class="relative group">
+          <a href="#" class="hover:text-[#C9A66B] transition flex items-center gap-1">Dresses ▼</a>
+          <ul class="absolute left-0 top-full pt-2 w-52 hidden group-hover:block z-50">
+            <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+              <li><a href="category.html?cat=Ready To Wear" class="block px-4 py-3 hover:bg-[#FDF8F0]">Ready To Wear</a></li>
+              <li><a href="category.html?cat=Unstitched" class="block px-4 py-3 hover:bg-[#FDF8F0]">Unstitched</a></li>
+              <li><a href="category.html?cat=Formal" class="block px-4 py-3 hover:bg-[#FDF8F0]">Formal</a></li>
+              <li><a href="category.html?cat=Western Wear" class="block px-4 py-3 hover:bg-[#FDF8F0]">Western Wear</a></li>
+              <li><a href="category.html?cat=Fancy" class="block px-4 py-3 hover:bg-[#FDF8F0]">Fancy</a></li>
+            </div>
+          </ul>
+        </li>
+
+        <!-- Accessories Dropdown -->
+        <li class="relative group">
+          <a href="#" class="hover:text-[#C9A66B] transition flex items-center gap-1">Accessories ▼</a>
+          <ul class="absolute left-0 top-full pt-2 w-52 hidden group-hover:block z-50">
+            <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+              <li><a href="category.html?cat=HandBags" class="block px-4 py-3 hover:bg-[#FDF8F0]">HandBags</a></li>
+              <li><a href="category.html?cat=Jwellery" class="block px-4 py-3 hover:bg-[#FDF8F0]">Jwellery</a></li>
+              <li><a href="category.html?cat=Fragrance" class="block px-4 py-3 hover:bg-[#FDF8F0]">Fragrance</a></li>
+            </div>
+          </ul>
+        </li>
+
+        <!-- Cosmetics Dropdown -->
+        <li class="relative group">
+          <a href="#" class="hover:text-[#C9A66B] transition flex items-center gap-1">Cosmetics ▼</a>
+          <ul class="absolute left-0 top-full pt-2 w-52 hidden group-hover:block z-50">
+            <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+              <li><a href="category.html?cat=Skin Care" class="block px-4 py-3 hover:bg-[#FDF8F0]">Skin Care</a></li>
+              <li><a href="category.html?cat=Hair Care" class="block px-4 py-3 hover:bg-[#FDF8F0]">Hair Care</a></li>
+              <li><a href="category.html?cat=Body Care" class="block px-4 py-3 hover:bg-[#FDF8F0]">Body Care</a></li>
+              <li><a href="category.html?cat=Makeup" class="block px-4 py-3 hover:bg-[#FDF8F0]">Makeup</a></li>
+            </div>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Right Icons: Search + Cart -->
+      <div class="flex items-center gap-4">
+        <button id="searchBtn" class="p-2 hover:bg-gray-100 rounded-full">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </button>
+
+        <button id="cartBtn" class="relative p-2 hover:bg-gray-100 rounded-full">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 7H4L5 9z"/>
+          </svg>
+          <span id="cartCount" class="absolute -top-1 -right-1 bg-[#C9A66B] text-white text-xs rounded-full px-1.5">0</span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t max-h-96 overflow-y-auto">
+      <div class="px-4 py-3 space-y-2">
+        <a href="index.html" class="block py-2 text-gray-700 hover:text-[#C9A66B]">Home</a>
+
+        <div>
+          <button class="w-full flex justify-between items-center py-2 text-gray-700 hover:text-[#C9A66B]" onclick="toggleMobileSub('dresses')">
+            Dresses <span id="arrow-dresses">▼</span>
+          </button>
+          <div id="sub-dresses" class="hidden pl-4 space-y-2">
+            <a href="category.html?cat=Ready To Wear" class="block py-2 text-sm text-gray-600">Ready To Wear</a>
+            <a href="category.html?cat=Unstitched" class="block py-2 text-sm text-gray-600">Unstitched</a>
+            <a href="category.html?cat=Formal" class="block py-2 text-sm text-gray-600">Formal</a>
+            <a href="category.html?cat=Western Wear" class="block py-2 text-sm text-gray-600">Western Wear</a>
+            <a href="category.html?cat=Fancy" class="block py-2 text-sm text-gray-600">Fancy</a>
+          </div>
+        </div>
+
+        <div>
+          <button class="w-full flex justify-between items-center py-2 text-gray-700 hover:text-[#C9A66B]" onclick="toggleMobileSub('accessories')">
+            Accessories <span id="arrow-accessories">▼</span>
+          </button>
+          <div id="sub-accessories" class="hidden pl-4 space-y-2">
+            <a href="category.html?cat=HandBags" class="block py-2 text-sm text-gray-600">HandBags</a>
+            <a href="category.html?cat=Jwellery" class="block py-2 text-sm text-gray-600">Jwellery</a>
+            <a href="category.html?cat=Fragrance" class="block py-2 text-sm text-gray-600">Fragrance</a>
+          </div>
+        </div>
+
+        <div>
+          <button class="w-full flex justify-between items-center py-2 text-gray-700 hover:text-[#C9A66B]" onclick="toggleMobileSub('cosmetics')">
+            Cosmetics <span id="arrow-cosmetics">▼</span>
+          </button>
+          <div id="sub-cosmetics" class="hidden pl-4 space-y-2">
+            <a href="category.html?cat=Skin Care" class="block py-2 text-sm text-gray-600">Skin Care</a>
+            <a href="category.html?cat=Hair Care" class="block py-2 text-sm text-gray-600">Hair Care</a>
+            <a href="category.html?cat=Body Care" class="block py-2 text-sm text-gray-600">Body Care</a>
+            <a href="category.html?cat=Makeup" class="block py-2 text-sm text-gray-600">Makeup</a>
+          </div>
+        </div>
+
+        <a href="admin.html" class="block py-2 px-4 bg-[#C9A66B] text-white rounded-lg text-center mt-3 hover:bg-[#B8945F]">Admin Panel</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Banner Slider -->
+  <section class="relative h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden">
+    <div id="bannerSlider" class="flex transition-transform duration-700 ease-in-out h-full"></div>
+    <div id="bannerDots" class="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-2"></div>
+  </section>
+
+  <main class="max-w-7xl mx-auto p-4 sm:p-6">
+    <div class="text-center mb-6 sm:mb-10">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3">Featured Products</h2>
+      <div class="w-16 sm:w-20 h-1 bg-[#C9A66B] mx-auto rounded"></div>
+    </div>
+
+    <div id="products" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"></div>
+  </main>
+
+  <!-- Cart Sidebar -->
+  <div id="cartSidebar" class="hidden fixed top-0 right-0 w-full sm:w-96 h-full bg-white shadow-2xl z-50 transition-transform">
+    <div class="flex justify-between items-center p-4 border-b">
+      <h3 class="text-xl font-bold">Your Cart</h3>
+      <button id="closeCart" class="text-2xl hover:text-[#C9A66B]">✕</button>
+    </div>
+    <div id="cartItems" class="p-4 space-y-3 overflow-y-auto" style="height: calc(100% - 180px);"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-4 bg-white border-t">
+      <p class="font-bold text-lg mb-3">Total: Rs <span id="cartTotal">0</span></p>
+      <button id="orderBtn" class="bg-[#C9A66B] text-white w-full py-3 rounded-lg font-semibold hover:bg-[#B8945F]">
+        Order on WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <!-- Cart Overlay -->
+  <div id="cartOverlay" class="hidden fixed inset-0 bg-black/50 z-40"></div>
+
+  <footer class="bg-[#1A1A1A] text-gray-300 text-center py-6 sm:py-8 mt-12 sm:mt-16">
+    <div class="px-4">
+      <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Aneeba's Collection</h3>
+      <p class="text-sm">Your one-stop shop for fashion & beauty</p>
+      <p class="text-xs mt-3 sm:mt-4 text-gray-500">© 2025 Aneeba's Collection. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/923226135815" target="_blank"
+     class="fixed bottom-5 right-5 bg-[#C9A66B] hover:bg-[#B8945F] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg z-50 transition transform hover:scale-110">
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-8 h-8 fill-white">
+      <path d="M16.001 2.667c-7.373 0-13.334 5.961-13.334 13.333 0 2.352.614 4.646 1.781 6.667l-1.875 6.854 7.021-1.84c1.979 1.083 4.213 1.652 6.407 1.652 7.373 0 13.333-5.961 13.333-13.333s-5.96-13.333-13.333-13.333zm0 24c-1.994 0-3.946-.521-5.667-1.507l-.406-.233-4.166 1.093 1.114-4.062-.264-.417c-1.081-1.71-1.652-3.678-1.652-5.707 0-5.894 4.773-10.667 10.667-10.667s10.667 4.773 10.667 10.667-4.773 10.667-10.667 10.667zm5.84-7.973c-.32-.16-1.893-.933-2.187-.96-.293-.053-.507-.08-.72.08s-.827.96-1.013 1.157c-.187.213-.373.24-.693.08-.32-.16-1.347-.493-2.56-1.573-.947-.84-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.144-.16.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.373-.26-.62-.533-.533-.72-.547l-.613-.013c-.213 0-.56.08-.853.4s-1.12 1.093-1.12 2.667 1.147 3.093 1.307 3.307c.16.213 2.253 3.44 5.467 4.827.763.333 1.36.533 1.827.693.773.24 1.467.213 2.02.133.613-.08 1.893-.773 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"/>
+    </svg>
+  </a>
+
+<script type="module">
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs, query, orderBy, limit, getDoc, doc } from "firebase/firestore";
+
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+let cart = [];
+let allProducts = [];
+
+// Mobile Menu Toggle
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.onclick = () => {
+  mobileMenu.classList.toggle('hidden');
+}
+
+window.toggleMobileSub = (name) => {
+  const sub = document.getElementById('sub-' + name);
+  const arrow = document.getElementById('arrow-' + name);
+  sub.classList.toggle('hidden');
+  arrow.textContent = sub.classList.contains('hidden')? '▼' : '▲';
+}
+
+// Load Products
+async function loadProducts() {
+  const q = query(collection(db, "products"), orderBy("createdAt", "desc"), limit(12));
+  const snap = await getDocs(q);
+  allProducts = snap.docs.map(doc => ({id: doc.id,...doc.data()}));
+  renderProducts(allProducts);
+}
+
+function renderProducts(products) {
+  document.getElementById("products").innerHTML = products.length === 0
+? `<div class="col-span-2 sm:col-span-4 text-center py-12"><p class="text-gray-500 text-lg">No products yet</p></div>`
+    : products.map(p => `
+      <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden group">
+        <div class="overflow-hidden relative">
+          <img src="${p.images[0]}" class="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition duration-300">
+          ${p.images.length > 1? `<div class="absolute bottom-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded">+${p.images.length - 1}</div>` : ''}
+        </div>
+        <div class="p-3 sm:p-4">
+          <h3 class="font-semibold text-sm sm:text-lg mb-1 line-clamp-1">${p.name}</h3>
+          <p class="text-xs text-gray-500 mb-1 sm:mb-2">${p.category}</p>
+          <p class="text-[#C9A66B] font-bold text-base sm:text-xl mb-2">Rs ${p.price}</p>
+          <button onclick='addToCart(${JSON.stringify(p).replace(/'/g, "&apos;")})'
+            class="bg-[#C9A66B] text-white w-full py-2 rounded-lg hover:bg-[#B8945F] text-sm font-semibold">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    `).join("");
+}
+
+// Cart Functions
+window.addToCart = (product) => {
+  cart.push(product);
+  updateCartUI();
+  showToast(product.name + " added to cart!");
+};
+
+function updateCartUI() {
+  document.getElementById('cartCount').innerText = cart.length;
+
+  if(cart.length === 0) {
+    document.getElementById('cartItems').innerHTML = `<p class="text-gray-500 text-center py-10">Your cart is empty</p>`;
+    document.getElementById('cartTotal').innerText = 0;
+    return;
+  }
+
+  document.getElementById('cartItems').innerHTML = cart.map((item, i) => `
+    <div class="flex gap-3 border-b pb-3">
+      <img src="${item.images[0]}" class="w-20 h-20 object-cover rounded">
+      <div class="flex-1">
+        <p class="font-medium text-sm">${item.name}</p>
+        <p class="text-xs text-gray-500">${item.category}</p>
+        <p class="text-[#C9A66B] font-bold">Rs ${item.price}</p>
+        <button onclick="removeFromCart(${i})" class="text-red-600 text-xs mt-1">Remove</button>
+      </div>
+    </div>
+  `).join('');
+
+  const total = cart.reduce((sum, item) => sum + parseInt(item.price), 0);
+  document.getElementById('cartTotal').innerText = total;
+}
+
+window.removeFromCart = (index) => {
+  cart.splice(index, 1);
+  updateCartUI();
+};
+
+// Cart Toggle
+document.getElementById('cartBtn').onclick = () => {
+  document.getElementById('cartSidebar').classList.remove('hidden');
+  document.getElementById('cartOverlay').classList.remove('hidden');
+};
+document.getElementById('closeCart').onclick = () => {
+  document.getElementById('cartSidebar').classList.add('hidden');
+  document.getElementById('cartOverlay').classList.add('hidden');
+};
+document.getElementById('cartOverlay').onclick = () => {
+  document.getElementById('cartSidebar').classList.add('hidden');
+  document.getElementById('cartOverlay').classList.add('hidden');
+};
+
+// WhatsApp Order
+document.getElementById('orderBtn').onclick = () => {
+  if(cart.length === 0) return alert("Cart is empty!");
+
+  let msg = "🛍️ *New Order - Aneeba's Collection*\n\n";
+  cart.forEach((item, i) => {
+    msg += `${i+1}. ${item.name}\n Category: ${item.category}\n Price: Rs ${item.price}\n\n`;
+  });
+  msg += `*Total: Rs ${cart.reduce((a,b) => a + parseInt(b.price), 0)}*\n\n`;
+  msg += "Please confirm my order.\n\n";
+  msg += "Name: \n";
+  msg += "Address: \n";
+  msg += "Phone: ";
+
+  window.open(`https://wa.me/923226135815?text=${encodeURIComponent(msg)}`);
+};
+
+// Search
+document.getElementById('searchBtn').onclick = () => {
+  const search = prompt("Search products:");
+  if(search) {
+    const filtered = allProducts.filter(p =>
+      p.name.toLowerCase().includes(search.toLowerCase()) ||
+      p.category.toLowerCase().includes(search.toLowerCase())
+    );
+    renderProducts(filtered);
+  } else {
+    renderProducts(allProducts);
+  }
+};
+
+// Toast Notification
+function showToast(message) {
+  const toast = document.createElement('div');
+  toast.className = 'fixed bottom-4 right-4 bg-gray-900 text-white px-4 py-3 rounded-lg shadow-lg z-50 animate-pulse';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2000);
+}
+
+// Load Banner Slider
+async function loadBannerSlider() {
+  const docSnap = await getDoc(doc(db, "settings", "banners"));
+  const banners = docSnap.exists()? docSnap.data().list || [] : [];
+
+  if (banners.length === 0) {
+    document.getElementById('bannerSlider').innerHTML = `
+      <div class="min-w-full h-full relative">
+        <img src="/banner.jpg" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 flex items-center">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 text-white">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">BIG SALE UPTO 50%</h1>
+            <p class="text-base sm:text-lg md:text-xl mb-4 sm:mb-6">Discover the latest fashion & beauty trends</p>
+            <a href="#products" class="bg-[#C9A66B] px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold hover:bg-[#B8945F] transition inline-block text-sm sm:text-base">Shop Now →</a>
+          </div>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  document.getElementById('bannerSlider').innerHTML = banners.map(banner => `
+    <div class="min-w-full h-full relative">
+      <img src="${banner.url}" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30 flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-white">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">BIG SALE UPTO 50%</h1>
+          <p class="text-base sm:text-lg md:text-xl mb-4 sm:mb-6">Discover the latest fashion & beauty trends</p>
+          <a href="#products" class="bg-[#C9A66B] px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold hover:bg-[#B8945F] transition inline-block text-sm sm:text-base">Shop Now →</a>
+        </div>
+      </div>
+    </div>
+  `).join("");
+
+  document.getElementById('bannerDots').innerHTML = banners.map((_, i) => `
+    <button class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/50 transition ${i === 0? 'bg-white' : ''}" onclick="goToSlide(${i})"></button>
+  `).join("");
+
+  let currentSlide = 0;
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % banners.length;
+    goToSlide(currentSlide);
+  }, 4000);
+}
+
+window.goToSlide = (index) => {
+  document.getElementById('bannerSlider').style.transform = `translateX(-${index * 100}%)`;
+  document.querySelectorAll('#bannerDots button').forEach((dot, i) => {
+    dot.className = `w-2 h-2 sm:w-3 sm:h-3 rounded-full transition ${i === index? 'bg-white' : 'bg-white/50'}`;
+  });
+};
+
+loadProducts();
+loadBannerSlider();
+</script>
+</body>
+</html>
