@@ -1,454 +1,1083 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aneeba's Collection – Fashion & Beauty</title>
-  <link rel="icon" href="/favicon.ico">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-  <style>
-    *{scroll-behavior:smooth}
-    body{font-family:'Poppins',sans-serif;background:#FFF5F8}
-    .serif{font-family:'Playfair Display',serif}
-    #mobileMenu::-webkit-scrollbar{display:none}
-    .line-clamp-1{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
-    .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-    .fade-in.visible{opacity:1;transform:none}
-    #searchOverlay{transition:all .3s ease}
-    .skeleton{background:linear-gradient(90deg,#f0e0e8 25%,#fce4ec 50%,#f0e0e8 75%);background-size:200% 100%;animation:shimmer 1.4s infinite}
-    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-    .card-hover{transition:transform .3s ease,box-shadow .3s ease}
-    .card-hover:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(194,24,91,.12)}
-    nav .dropdown:hover .dropdown-menu{display:block}
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aneeba's Collection – Fashion & Beauty</title>
+    <link rel="icon" href="/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #fff5f8;
+      }
+      .serif {
+        font-family: "Playfair Display", serif;
+      }
+      #mobileMenu::-webkit-scrollbar {
+        display: none;
+      }
+      .line-clamp-1 {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: none;
+      }
+      #searchOverlay {
+        transition: all 0.3s ease;
+      }
+      .skeleton {
+        background: linear-gradient(
+          90deg,
+          #f0e0e8 25%,
+          #fce4ec 50%,
+          #f0e0e8 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.4s infinite;
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+      .card-hover {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(194, 24, 91, 0.12);
+      }
+      nav .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Announcement Bar -->
+    <div
+      class="bg-[#C2185B] text-white text-center py-2 text-xs font-medium tracking-wide px-4"
+    >
+      🚚 Delivery Available All over Pakistan &nbsp;|&nbsp; 🌸 New Arrivals
+      Every Week &nbsp;|&nbsp; ✨ Advance Payment Available
+    </div>
 
-  <!-- Announcement Bar -->
-  <div class="bg-[#C2185B] text-white text-center py-2 text-xs font-medium tracking-wide px-4">
-    🚚 Delivery Available All over Pakistan &nbsp;|&nbsp; 🌸 New Arrivals Every Week &nbsp;|&nbsp; ✨ Advance Payment Available
-  </div>
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-pink-50">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between"
+      >
+        <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
+          <img src="/logo.png" alt="Logo" class="h-10 sm:h-12 object-contain" />
+          <span
+            class="text-lg sm:text-xl font-bold text-[#C2185B] serif hidden sm:block"
+            >Aneeba's Collection</span
+          >
+        </a>
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-pink-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+        <ul
+          class="hidden md:flex items-center gap-7 text-sm text-gray-700 font-medium"
+        >
+          <li>
+            <a
+              href="index.html"
+              class="text-[#C2185B] font-semibold border-b-2 border-[#C2185B] pb-0.5"
+              >Home</a
+            >
+          </li>
 
-      <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
-        <img src="/logo.png" alt="Logo" class="h-10 sm:h-12 object-contain">
-        <span class="text-lg sm:text-xl font-bold text-[#C2185B] serif hidden sm:block">Aneeba's Collection</span>
-      </a>
-
-      <ul class="hidden md:flex items-center gap-7 text-sm text-gray-700 font-medium">
-        <li><a href="index.html" class="text-[#C2185B] font-semibold border-b-2 border-[#C2185B] pb-0.5">Home</a></li>
-
-        <li class="relative group">
-          <a href="#" class="flex items-center gap-1 hover:text-[#C2185B] transition py-5">Dresses <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></a>
-          <div class="absolute left-0 top-full w-52 hidden group-hover:block z-50 pt-1">
-            <div class="bg-white shadow-2xl rounded-2xl overflow-hidden border border-pink-50">
-              <a href="category.html?cat=Ready To Wear" class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm">👗 Ready To Wear</a>
-              <a href="category.html?cat=Unstitched" class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm">🧵 Unstitched</a>
-              <a href="category.html?cat=Formal" class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm">✨ Formal</a>
-              <a href="category.html?cat=Western Wear" class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm">👠 Western Wear</a>
-              <a href="category.html?cat=Fancy" class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm">💫 Fancy</a>
+          <li class="relative group">
+            <a
+              href="#"
+              class="flex items-center gap-1 hover:text-[#C2185B] transition py-5"
+              >Dresses
+              <svg
+                class="w-3 h-3 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M19 9l-7 7-7-7"
+                /></svg
+            ></a>
+            <div
+              class="absolute left-0 top-full w-52 hidden group-hover:block z-50 pt-1"
+            >
+              <div
+                class="bg-white shadow-2xl rounded-2xl overflow-hidden border border-pink-50"
+              >
+                <a
+                  href="category.html?cat=Ready To Wear"
+                  class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm"
+                  >👗 Ready To Wear</a
+                >
+                <a
+                  href="category.html?cat=Unstitched"
+                  class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm"
+                  >🧵 Unstitched</a
+                >
+                <a
+                  href="category.html?cat=Formal"
+                  class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm"
+                  >✨ Formal</a
+                >
+                <a
+                  href="category.html?cat=Western Wear"
+                  class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm"
+                  >👠 Western Wear</a
+                >
+                <a
+                  href="category.html?cat=Fancy"
+                  class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm"
+                  >💫 Fancy</a
+                >
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li class="relative group">
-          <a href="#" class="flex items-center gap-1 hover:text-[#C2185B] transition py-5">Accessories <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></a>
-          <div class="absolute left-0 top-full w-52 hidden group-hover:block z-50 pt-1">
-            <div class="bg-white shadow-2xl rounded-2xl overflow-hidden border border-pink-50">
-              <a href="category.html?cat=HandBags" class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm">👜 HandBags</a>
-              <a href="category.html?cat=Jwellery" class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm">💍 Jwellery</a>
-              <a href="category.html?cat=Fragrance" class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm">🌸 Fragrance</a>
+          <li class="relative group">
+            <a
+              href="#"
+              class="flex items-center gap-1 hover:text-[#C2185B] transition py-5"
+              >Accessories
+              <svg
+                class="w-3 h-3 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M19 9l-7 7-7-7"
+                /></svg
+            ></a>
+            <div
+              class="absolute left-0 top-full w-52 hidden group-hover:block z-50 pt-1"
+            >
+              <div
+                class="bg-white shadow-2xl rounded-2xl overflow-hidden border border-pink-50"
+              >
+                <a
+                  href="category.html?cat=HandBags"
+                  class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm"
+                  >👜 HandBags</a
+                >
+                <a
+                  href="category.html?cat=Jwellery"
+                  class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm"
+                  >💍 Jwellery</a
+                >
+                <a
+                  href="category.html?cat=Fragrance"
+                  class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm"
+                  >🌸 Fragrance</a
+                >
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li class="relative group">
-          <a href="#" class="flex items-center gap-1 hover:text-[#C2185B] transition py-5">Cosmetics <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></a>
-          <div class="absolute left-0 top-full w-52 hidden group-hover:block z-50 pt-1">
-            <div class="bg-white shadow-2xl rounded-2xl overflow-hidden border border-pink-50">
-              <a href="category.html?cat=Skin Care" class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm">🌿 Skin Care</a>
-              <a href="category.html?cat=Hair Care" class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm">💆 Hair Care</a>
-              <a href="category.html?cat=Body Care" class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm">🧴 Body Care</a>
-              <a href="category.html?cat=Makeup" class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm">💄 Makeup</a>
+          <li class="relative group">
+            <a
+              href="#"
+              class="flex items-center gap-1 hover:text-[#C2185B] transition py-5"
+              >Cosmetics
+              <svg
+                class="w-3 h-3 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M19 9l-7 7-7-7"
+                /></svg
+            ></a>
+            <div
+              class="absolute left-0 top-full w-52 hidden group-hover:block z-50 pt-1"
+            >
+              <div
+                class="bg-white shadow-2xl rounded-2xl overflow-hidden border border-pink-50"
+              >
+                <a
+                  href="category.html?cat=Skin Care"
+                  class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm"
+                  >🌿 Skin Care</a
+                >
+                <a
+                  href="category.html?cat=Hair Care"
+                  class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm"
+                  >💆 Hair Care</a
+                >
+                <a
+                  href="category.html?cat=Body Care"
+                  class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm"
+                  >🧴 Body Care</a
+                >
+                <a
+                  href="category.html?cat=Makeup"
+                  class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm"
+                  >💄 Makeup</a
+                >
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
 
-      <div class="flex items-center gap-2 sm:gap-3">
-        <button id="searchBtn" class="p-2 hover:bg-[#FFF0F5] rounded-full transition" title="Search">
-          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-        </button>
-        <button id="cartBtn" class="relative p-2 hover:bg-[#FFF0F5] rounded-full transition">
-          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 7H4L5 9z"/></svg>
-          <span id="cartCount" class="absolute -top-0.5 -right-0.5 bg-[#C2185B] text-white text-xs rounded-full w-4 h-4 flex items-center justify-center font-semibold">0</span>
-        </button>
-        <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-[#FFF0F5]">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-pink-50 max-h-[75vh] overflow-y-auto">
-      <div class="px-4 py-3 space-y-1">
-        <a href="index.html" class="block py-2.5 text-[#C2185B] font-semibold">Home</a>
-        <div>
-          <button class="w-full flex justify-between items-center py-2.5 text-gray-700 font-medium" onclick="toggleMobileSub('dresses')">
-            👗 Dresses <span id="arrow-dresses" class="text-xs">▼</span>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button
+            id="searchBtn"
+            class="p-2 hover:bg-[#FFF0F5] rounded-full transition"
+            title="Search"
+          >
+            <svg
+              class="w-5 h-5 text-gray-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
           </button>
-          <div id="sub-dresses" class="hidden pl-5 space-y-1 pb-2">
-            <a href="category.html?cat=Ready To Wear" class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]">Ready To Wear</a>
-            <a href="category.html?cat=Unstitched" class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]">Unstitched</a>
-            <a href="category.html?cat=Formal" class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]">Formal</a>
-            <a href="category.html?cat=Western Wear" class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]">Western Wear</a>
-            <a href="category.html?cat=Fancy" class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]">Fancy</a>
-          </div>
-        </div>
-        <div>
-          <button class="w-full flex justify-between items-center py-2.5 text-gray-700 font-medium" onclick="toggleMobileSub('accessories')">
-            👜 Accessories <span id="arrow-accessories" class="text-xs">▼</span>
+          <button
+            id="cartBtn"
+            class="relative p-2 hover:bg-[#FFF0F5] rounded-full transition"
+          >
+            <svg
+              class="w-5 h-5 text-gray-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 7H4L5 9z"
+              />
+            </svg>
+            <span
+              id="cartCount"
+              class="absolute -top-0.5 -right-0.5 bg-[#C2185B] text-white text-xs rounded-full w-4 h-4 flex items-center justify-center font-semibold"
+              >0</span
+            >
           </button>
-          <div id="sub-accessories" class="hidden pl-5 space-y-1 pb-2">
-            <a href="category.html?cat=HandBags" class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]">HandBags</a>
-            <a href="category.html?cat=Jwellery" class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]">Jwellery</a>
-            <a href="category.html?cat=Fragrance" class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]">Fragrance</a>
-          </div>
-        </div>
-        <div>
-          <button class="w-full flex justify-between items-center py-2.5 text-gray-700 font-medium" onclick="toggleMobileSub('cosmetics')">
-            💄 Cosmetics <span id="arrow-cosmetics" class="text-xs">▼</span>
+          <button
+            id="menuBtn"
+            class="md:hidden p-2 rounded-lg hover:bg-[#FFF0F5]"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
           </button>
-          <div id="sub-cosmetics" class="hidden pl-5 space-y-1 pb-2">
-            <a href="category.html?cat=Skin Care" class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]">Skin Care</a>
-            <a href="category.html?cat=Hair Care" class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]">Hair Care</a>
-            <a href="category.html?cat=Body Care" class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]">Body Care</a>
-            <a href="category.html?cat=Makeup" class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]">Makeup</a>
-          </div>
         </div>
-        <a href="admin.html" class="block py-2.5 px-4 bg-[#C2185B] text-white rounded-xl text-center mt-2 text-sm font-semibold hover:bg-[#AD1457]">Admin Panel</a>
       </div>
-    </div>
-  </nav>
 
-  <!-- Search Overlay -->
-  <div id="searchOverlay" class="hidden fixed inset-0 bg-black/40 z-50 flex items-start justify-center pt-24 px-4">
-    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-xl p-4">
-      <div class="flex items-center gap-3 border-2 border-[#C2185B] rounded-xl px-4 py-2">
-        <svg class="w-5 h-5 text-[#C2185B] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-        <input id="searchInput" type="text" placeholder="Search products, categories..." class="flex-1 outline-none text-gray-700 text-sm bg-transparent">
-        <button id="closeSearch" class="text-gray-400 hover:text-[#C2185B] text-xl leading-none">✕</button>
-      </div>
-      <div id="searchResults" class="mt-3 space-y-2 max-h-80 overflow-y-auto"></div>
-    </div>
-  </div>
-
-  <!-- Hero Banner Slider -->
-  <section class="relative h-[280px] sm:h-[380px] md:h-[500px] overflow-hidden">
-    <div id="bannerSlider" class="flex h-full" style="transition:transform .7s cubic-bezier(.4,0,.2,1)"></div>
-    <div id="bannerDots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"></div>
-    <!-- Prev/Next arrows -->
-    <button id="prevSlide" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center shadow transition z-10">‹</button>
-    <button id="nextSlide" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center shadow transition z-10">›</button>
-  </section>
-
-  <!-- Features Strip -->
-  <section class="bg-white border-y border-pink-100">
-    <div class="max-w-7xl mx-auto px-4 py-5 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm">
-      <div class="flex flex-col items-center gap-1.5">
-        <span class="text-2xl">🚚</span>
-        <p class="font-semibold text-gray-800">Fast Delivery</p>
-        <p class="text-xs text-gray-500">All over Pakistan</p>
-      </div>
-      <div class="flex flex-col items-center gap-1.5">
-        <span class="text-2xl">✅</span>
-        <p class="font-semibold text-gray-800">100% Authentic</p>
-        <p class="text-xs text-gray-500">Genuine products only</p>
-      </div>
-      <div class="flex flex-col items-center gap-1.5">
-        <span class="text-2xl">💬</span>
-        <p class="font-semibold text-gray-800">WhatsApp Support</p>
-        <p class="text-xs text-gray-500">Order anytime, easily</p>
-      </div>
-      <div class="flex flex-col items-center gap-1.5">
-        <span class="text-2xl">💳</span>
-        <p class="font-semibold text-gray-800">Easy Payment</p>
-        <p class="text-xs text-gray-500">Advance payment available</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Shop by Category -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
-    <div class="text-center mb-8 fade-in">
-      <p class="text-xs font-semibold text-[#C2185B] tracking-widest uppercase mb-1">Browse</p>
-      <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 serif">Shop by Category</h2>
-      <div class="w-12 h-1 bg-[#C2185B] mx-auto mt-3 rounded-full"></div>
-    </div>
-    <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4 fade-in">
-      <a href="category.html?cat=Ready To Wear" class="group flex flex-col items-center gap-2 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition card-hover border border-pink-50">
-        <span class="text-3xl group-hover:scale-110 transition-transform duration-200">👗</span>
-        <span class="text-xs font-semibold text-gray-700 text-center leading-tight">Ready To Wear</span>
-      </a>
-      <a href="category.html?cat=Formal" class="group flex flex-col items-center gap-2 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition card-hover border border-pink-50">
-        <span class="text-3xl group-hover:scale-110 transition-transform duration-200">✨</span>
-        <span class="text-xs font-semibold text-gray-700 text-center leading-tight">Formal</span>
-      </a>
-      <a href="category.html?cat=HandBags" class="group flex flex-col items-center gap-2 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition card-hover border border-pink-50">
-        <span class="text-3xl group-hover:scale-110 transition-transform duration-200">👜</span>
-        <span class="text-xs font-semibold text-gray-700 text-center leading-tight">HandBags</span>
-      </a>
-      <a href="category.html?cat=Jwellery" class="group flex flex-col items-center gap-2 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition card-hover border border-pink-50">
-        <span class="text-3xl group-hover:scale-110 transition-transform duration-200">💍</span>
-        <span class="text-xs font-semibold text-gray-700 text-center leading-tight">Jwellery</span>
-      </a>
-      <a href="category.html?cat=Makeup" class="group flex flex-col items-center gap-2 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition card-hover border border-pink-50">
-        <span class="text-3xl group-hover:scale-110 transition-transform duration-200">💄</span>
-        <span class="text-xs font-semibold text-gray-700 text-center leading-tight">Makeup</span>
-      </a>
-      <a href="category.html?cat=Skin Care" class="group flex flex-col items-center gap-2 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition card-hover border border-pink-50">
-        <span class="text-3xl group-hover:scale-110 transition-transform duration-200">🌿</span>
-        <span class="text-xs font-semibold text-gray-700 text-center leading-tight">Skin Care</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- Featured Products -->
-  <section id="products-section" class="max-w-7xl mx-auto px-4 sm:px-6 pb-12">
-    <div class="text-center mb-8 fade-in">
-      <p class="text-xs font-semibold text-[#C2185B] tracking-widest uppercase mb-1">Hand-picked</p>
-      <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 serif">Featured Products</h2>
-      <div class="w-12 h-1 bg-[#C2185B] mx-auto mt-3 rounded-full"></div>
-    </div>
-    <div id="products" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5"></div>
-    <div class="text-center mt-10 fade-in">
-      <p class="text-sm text-gray-500 mb-3">Looking for something specific?</p>
-      <a href="https://wa.me/923226135815" target="_blank"
-        class="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#1ebe5d] transition shadow-md">
-        <svg class="w-5 h-5 fill-white" viewBox="0 0 32 32"><path d="M16.001 2.667c-7.373 0-13.334 5.961-13.334 13.333 0 2.352.614 4.646 1.781 6.667l-1.875 6.854 7.021-1.84c1.979 1.083 4.213 1.652 6.407 1.652 7.373 0 13.333-5.961 13.333-13.333s-5.96-13.333-13.333-13.333zm0 24c-1.994 0-3.946-.521-5.667-1.507l-.406-.233-4.166 1.093 1.114-4.062-.264-.417c-1.081-1.71-1.652-3.678-1.652-5.707 0-5.894 4.773-10.667 10.667-10.667s10.667 4.773 10.667 10.667-4.773 10.667-10.667 10.667zm5.84-7.973c-.32-.16-1.893-.933-2.187-.96-.293-.053-.507-.08-.72.08s-.827.96-1.013 1.157c-.187.213-.373.24-.693.08-.32-.16-1.347-.493-2.56-1.573-.947-.84-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.144-.16.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.373-.26-.62-.533-.533-.72-.547l-.613-.013c-.213 0-.56.08-.853.4s-1.12 1.093-1.12 2.667 1.147 3.093 1.307 3.307c.16.213 2.253 3.44 5.467 4.827.763.333 1.36.533 1.827.693.773.24 1.467.213 2.02.133.613-.08 1.893-.773 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"/></svg>
-        Ask on WhatsApp
-      </a>
-    </div>
-  </section>
-
-  <!-- Order Form Modal -->
-  <div id="orderModal" class="hidden fixed inset-0 bg-black/60 z-[60] flex items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="bg-white rounded-t-3xl sm:rounded-2xl shadow-2xl w-full sm:max-w-md max-h-[92vh] overflow-y-auto">
-      <div class="flex justify-between items-center p-5 border-b border-pink-50 sticky top-0 bg-white z-10 rounded-t-3xl sm:rounded-t-2xl">
-        <div>
-          <h3 class="text-lg font-bold text-gray-800 serif">Place Your Order</h3>
-          <p class="text-xs text-gray-400">Fill in your delivery details</p>
-        </div>
-        <button id="closeOrderModal" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#FFF0F5] text-gray-500 hover:text-[#C2185B] transition text-lg">✕</button>
-      </div>
-      <div id="orderSummary" class="px-5 py-3 bg-[#FFF5F8] border-b border-pink-100 space-y-2"></div>
-      <form id="orderForm" class="p-5 space-y-4">
-        <div>
-          <label class="text-xs font-semibold text-gray-600 mb-1 block">Full Name *</label>
-          <input id="o-name" type="text" placeholder="Enter your full name" required
-            class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B]">
-        </div>
-        <div>
-          <label class="text-xs font-semibold text-gray-600 mb-1 block">Phone Number *</label>
-          <input id="o-phone" type="tel" placeholder="e.g. 0321 1234567" required
-            class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B]">
-        </div>
-        <div>
-          <label class="text-xs font-semibold text-gray-600 mb-1 block">Complete Address *</label>
-          <textarea id="o-address" rows="2" placeholder="House/Flat No., Street, Area..." required
-            class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B] resize-none"></textarea>
-        </div>
-        <div class="grid grid-cols-2 gap-3">
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-white border-t border-pink-50 max-h-[75vh] overflow-y-auto"
+      >
+        <div class="px-4 py-3 space-y-1">
+          <a href="index.html" class="block py-2.5 text-[#C2185B] font-semibold"
+            >Home</a
+          >
           <div>
-            <label class="text-xs font-semibold text-gray-600 mb-1 block">City *</label>
-            <input id="o-city" type="text" placeholder="e.g. Karachi" required
-              class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B]">
+            <button
+              class="w-full flex justify-between items-center py-2.5 text-gray-700 font-medium"
+              onclick="toggleMobileSub('dresses')"
+            >
+              👗 Dresses <span id="arrow-dresses" class="text-xs">▼</span>
+            </button>
+            <div id="sub-dresses" class="hidden pl-5 space-y-1 pb-2">
+              <a
+                href="category.html?cat=Ready To Wear"
+                class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]"
+                >Ready To Wear</a
+              >
+              <a
+                href="category.html?cat=Unstitched"
+                class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]"
+                >Unstitched</a
+              >
+              <a
+                href="category.html?cat=Formal"
+                class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]"
+                >Formal</a
+              >
+              <a
+                href="category.html?cat=Western Wear"
+                class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]"
+                >Western Wear</a
+              >
+              <a
+                href="category.html?cat=Fancy"
+                class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]"
+                >Fancy</a
+              >
+            </div>
           </div>
           <div>
-            <label class="text-xs font-semibold text-gray-600 mb-1 block">Postal Code</label>
-            <input id="o-zip" type="text" placeholder="e.g. 75600"
-              class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B]">
+            <button
+              class="w-full flex justify-between items-center py-2.5 text-gray-700 font-medium"
+              onclick="toggleMobileSub('accessories')"
+            >
+              👜 Accessories
+              <span id="arrow-accessories" class="text-xs">▼</span>
+            </button>
+            <div id="sub-accessories" class="hidden pl-5 space-y-1 pb-2">
+              <a
+                href="category.html?cat=HandBags"
+                class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]"
+                >HandBags</a
+              >
+              <a
+                href="category.html?cat=Jwellery"
+                class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]"
+                >Jwellery</a
+              >
+              <a
+                href="category.html?cat=Fragrance"
+                class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]"
+                >Fragrance</a
+              >
+            </div>
           </div>
-        </div>
-        <div>
-          <label class="text-xs font-semibold text-gray-600 mb-2 block">Payment Method *</label>
-          <div class="grid grid-cols-2 gap-2">
-            <label class="flex items-center gap-2 border rounded-xl p-3 cursor-pointer hover:border-[#C2185B] transition">
-              <input type="radio" name="o-payment" value="EasyPaisa" class="accent-[#C2185B]" required>
-              <span class="text-sm font-medium text-gray-700">💚 EasyPaisa</span>
-            </label>
-            <label class="flex items-center gap-2 border rounded-xl p-3 cursor-pointer hover:border-[#C2185B] transition">
-              <input type="radio" name="o-payment" value="JazzCash" class="accent-[#C2185B]">
-              <span class="text-sm font-medium text-gray-700">🔴 JazzCash</span>
-            </label>
-            <label class="flex items-center gap-2 border rounded-xl p-3 cursor-pointer hover:border-[#C2185B] transition">
-              <input type="radio" name="o-payment" value="Bank Transfer" class="accent-[#C2185B]">
-              <span class="text-sm font-medium text-gray-700">🏦 Bank Transfer</span>
-            </label>
+          <div>
+            <button
+              class="w-full flex justify-between items-center py-2.5 text-gray-700 font-medium"
+              onclick="toggleMobileSub('cosmetics')"
+            >
+              💄 Cosmetics <span id="arrow-cosmetics" class="text-xs">▼</span>
+            </button>
+            <div id="sub-cosmetics" class="hidden pl-5 space-y-1 pb-2">
+              <a
+                href="category.html?cat=Skin Care"
+                class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]"
+                >Skin Care</a
+              >
+              <a
+                href="category.html?cat=Hair Care"
+                class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]"
+                >Hair Care</a
+              >
+              <a
+                href="category.html?cat=Body Care"
+                class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]"
+                >Body Care</a
+              >
+              <a
+                href="category.html?cat=Makeup"
+                class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]"
+                >Makeup</a
+              >
+            </div>
           </div>
+          <a
+            href="admin.html"
+            class="block py-2.5 px-4 bg-[#C2185B] text-white rounded-xl text-center mt-2 text-sm font-semibold hover:bg-[#AD1457]"
+            >Admin Panel</a
+          >
         </div>
-        <button type="submit" id="placeOrderBtn"
-          class="bg-[#C2185B] text-white w-full py-3.5 rounded-xl font-semibold hover:bg-[#AD1457] transition flex items-center justify-center gap-2 text-sm shadow-md">
-          <svg class="w-5 h-5 fill-white" viewBox="0 0 32 32"><path d="M16.001 2.667c-7.373 0-13.334 5.961-13.334 13.333 0 2.352.614 4.646 1.781 6.667l-1.875 6.854 7.021-1.84c1.979 1.083 4.213 1.652 6.407 1.652 7.373 0 13.333-5.961 13.333-13.333s-5.96-13.333-13.333-13.333zm0 24c-1.994 0-3.946-.521-5.667-1.507l-.406-.233-4.166 1.093 1.114-4.062-.264-.417c-1.081-1.71-1.652-3.678-1.652-5.707 0-5.894 4.773-10.667 10.667-10.667s10.667 4.773 10.667 10.667-4.773 10.667-10.667 10.667zm5.84-7.973c-.32-.16-1.893-.933-2.187-.96-.293-.053-.507-.08-.72.08s-.827.96-1.013 1.157c-.187.213-.373.24-.693.08-.32-.16-1.347-.493-2.56-1.573-.947-.84-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.144-.16.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.373-.26-.62-.533-.533-.72-.547l-.613-.013c-.213 0-.56.08-.853.4s-1.12 1.093-1.12 2.667 1.147 3.093 1.307 3.307c.16.213 2.253 3.44 5.467 4.827.763.333 1.36.533 1.827.693.773.24 1.467.213 2.02.133.613-.08 1.893-.773 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"/></svg>
-          Confirm & Send to WhatsApp
-        </button>
-      </form>
-    </div>
-  </div>
+      </div>
+    </nav>
 
-  <!-- Cart Sidebar -->
-  <div id="cartSidebar" class="hidden fixed top-0 right-0 w-full sm:w-[380px] h-full bg-white shadow-2xl z-50">
-    <div class="flex justify-between items-center p-5 border-b border-pink-50">
-      <div>
-        <h3 class="text-lg font-bold text-gray-800 serif">Your Cart</h3>
-        <p id="cartSubtitle" class="text-xs text-gray-400">0 items</p>
+    <!-- Search Overlay -->
+    <div
+      id="searchOverlay"
+      class="hidden fixed inset-0 bg-black/40 z-50 flex items-start justify-center pt-24 px-4"
+    >
+      <div class="bg-white rounded-2xl shadow-2xl w-full max-w-xl p-4">
+        <div
+          class="flex items-center gap-3 border-2 border-[#C2185B] rounded-xl px-4 py-2"
+        >
+          <svg
+            class="w-5 h-5 text-[#C2185B] flex-shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search products, categories..."
+            class="flex-1 outline-none text-gray-700 text-sm bg-transparent"
+          />
+          <button
+            id="closeSearch"
+            class="text-gray-400 hover:text-[#C2185B] text-xl leading-none"
+          >
+            ✕
+          </button>
+        </div>
+        <div
+          id="searchResults"
+          class="mt-3 space-y-2 max-h-80 overflow-y-auto"
+        ></div>
       </div>
-      <button id="closeCart" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#FFF0F5] text-gray-500 hover:text-[#C2185B] transition text-lg">✕</button>
     </div>
-    <div id="cartItems" class="p-4 space-y-3 overflow-y-auto" style="height:calc(100% - 176px)"></div>
-    <div class="absolute bottom-0 left-0 right-0 p-4 bg-white border-t border-pink-50">
-      <div class="flex justify-between items-center mb-3">
-        <span class="font-semibold text-gray-700">Total</span>
-        <span class="text-xl font-bold text-[#C2185B]">Rs <span id="cartTotal">0</span></span>
-      </div>
-      <button id="orderBtn" class="bg-[#C2185B] text-white w-full py-3 rounded-xl font-semibold hover:bg-[#AD1457] transition flex items-center justify-center gap-2 shadow-md">
-        <svg class="w-5 h-5 fill-white" viewBox="0 0 32 32"><path d="M16.001 2.667c-7.373 0-13.334 5.961-13.334 13.333 0 2.352.614 4.646 1.781 6.667l-1.875 6.854 7.021-1.84c1.979 1.083 4.213 1.652 6.407 1.652 7.373 0 13.333-5.961 13.333-13.333s-5.96-13.333-13.333-13.333zm0 24c-1.994 0-3.946-.521-5.667-1.507l-.406-.233-4.166 1.093 1.114-4.062-.264-.417c-1.081-1.71-1.652-3.678-1.652-5.707 0-5.894 4.773-10.667 10.667-10.667s10.667 4.773 10.667 10.667-4.773 10.667-10.667 10.667zm5.84-7.973c-.32-.16-1.893-.933-2.187-.96-.293-.053-.507-.08-.72.08s-.827.96-1.013 1.157c-.187.213-.373.24-.693.08-.32-.16-1.347-.493-2.56-1.573-.947-.84-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.144-.16.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.373-.26-.62-.533-.533-.72-.547l-.613-.013c-.213 0-.56.08-.853.4s-1.12 1.093-1.12 2.667 1.147 3.093 1.307 3.307c.16.213 2.253 3.44 5.467 4.827.763.333 1.36.533 1.827.693.773.24 1.467.213 2.02.133.613-.08 1.893-.773 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"/></svg>
-        Order on WhatsApp
+
+    <!-- Hero Banner Slider -->
+    <section
+      class="relative h-[280px] sm:h-[380px] md:h-[500px] overflow-hidden"
+    >
+      <div
+        id="bannerSlider"
+        class="flex h-full"
+        style="transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)"
+      ></div>
+      <div
+        id="bannerDots"
+        class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+      ></div>
+      <!-- Prev/Next arrows -->
+      <button
+        id="prevSlide"
+        class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center shadow transition z-10"
+      >
+        ‹
       </button>
-    </div>
-  </div>
-  <div id="cartOverlay" class="hidden fixed inset-0 bg-black/40 z-40"></div>
+      <button
+        id="nextSlide"
+        class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-gray-800 rounded-full w-9 h-9 flex items-center justify-center shadow transition z-10"
+      >
+        ›
+      </button>
+    </section>
 
-  <!-- Footer -->
-  <footer class="bg-[#1A1A1A] text-gray-400 mt-6">
-    <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-3 gap-10">
-      <div>
-        <img src="/logo.png" alt="Logo" class="h-16 object-contain mb-3">
-        <p class="text-sm text-gray-500 leading-relaxed">Your one-stop shop for fashion &amp; beauty in Pakistan. Authentic products, fast delivery.</p>
-        <a href="https://wa.me/923226135815" target="_blank"
-          class="mt-4 inline-flex items-center gap-2 bg-[#25D366] text-white text-sm px-4 py-2 rounded-full hover:bg-[#1ebe5d] transition font-medium">
-          <svg class="w-4 h-4 fill-white" viewBox="0 0 32 32"><path d="M16.001 2.667c-7.373 0-13.334 5.961-13.334 13.333 0 2.352.614 4.646 1.781 6.667l-1.875 6.854 7.021-1.84c1.979 1.083 4.213 1.652 6.407 1.652 7.373 0 13.333-5.961 13.333-13.333s-5.96-13.333-13.333-13.333zm0 24c-1.994 0-3.946-.521-5.667-1.507l-.406-.233-4.166 1.093 1.114-4.062-.264-.417c-1.081-1.71-1.652-3.678-1.652-5.707 0-5.894 4.773-10.667 10.667-10.667s10.667 4.773 10.667 10.667-4.773 10.667-10.667 10.667zm5.84-7.973c-.32-.16-1.893-.933-2.187-.96-.293-.053-.507-.08-.72.08s-.827.96-1.013 1.157c-.187.213-.373.24-.693.08-.32-.16-1.347-.493-2.56-1.573-.947-.84-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.144-.16.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.373-.26-.62-.533-.533-.72-.547l-.613-.013c-.213 0-.56.08-.853.4s-1.12 1.093-1.12 2.667 1.147 3.093 1.307 3.307c.16.213 2.253 3.44 5.467 4.827.763.333 1.36.533 1.827.693.773.24 1.467.213 2.02.133.613-.08 1.893-.773 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"/></svg>
-          Chat on WhatsApp
+    <!-- Features Strip -->
+    <section class="bg-white border-y border-pink-100">
+      <div
+        class="max-w-7xl mx-auto px-4 py-5 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm"
+      >
+        <div class="flex flex-col items-center gap-1.5">
+          <span class="text-2xl">🚚</span>
+          <p class="font-semibold text-gray-800">Fast Delivery</p>
+          <p class="text-xs text-gray-500">All over Pakistan</p>
+        </div>
+        <div class="flex flex-col items-center gap-1.5">
+          <span class="text-2xl">✅</span>
+          <p class="font-semibold text-gray-800">100% Authentic</p>
+          <p class="text-xs text-gray-500">Genuine products only</p>
+        </div>
+        <div class="flex flex-col items-center gap-1.5">
+          <span class="text-2xl">💬</span>
+          <p class="font-semibold text-gray-800">WhatsApp Support</p>
+          <p class="text-xs text-gray-500">Order anytime, easily</p>
+        </div>
+        <div class="flex flex-col items-center gap-1.5">
+          <span class="text-2xl">💳</span>
+          <p class="font-semibold text-gray-800">Easy Payment</p>
+          <p class="text-xs text-gray-500">Advance payment available</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop by Category -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+      <div class="text-center mb-8 fade-in">
+        <p
+          class="text-xs font-semibold text-[#C2185B] tracking-widest uppercase mb-1"
+        >
+          Browse
+        </p>
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 serif">
+          Shop by Category
+        </h2>
+        <div class="w-12 h-1 bg-[#C2185B] mx-auto mt-3 rounded-full"></div>
+      </div>
+      <div
+        class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4 fade-in"
+      >
+        <a
+          href="category.html?cat=Ready To Wear"
+          class="group flex flex-col items-center gap-2 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition card-hover border border-pink-50"
+        >
+          <span
+            class="text-3xl group-hover:scale-110 transition-transform duration-200"
+            >👗</span
+          >
+          <span
+            class="text-xs font-semibold text-gray-700 text-center leading-tight"
+            >Ready To Wear</span
+          >
+        </a>
+        <a
+          href="category.html?cat=Formal"
+          class="group flex flex-col items-center gap-2 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition card-hover border border-pink-50"
+        >
+          <span
+            class="text-3xl group-hover:scale-110 transition-transform duration-200"
+            >✨</span
+          >
+          <span
+            class="text-xs font-semibold text-gray-700 text-center leading-tight"
+            >Formal</span
+          >
+        </a>
+        <a
+          href="category.html?cat=HandBags"
+          class="group flex flex-col items-center gap-2 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition card-hover border border-pink-50"
+        >
+          <span
+            class="text-3xl group-hover:scale-110 transition-transform duration-200"
+            >👜</span
+          >
+          <span
+            class="text-xs font-semibold text-gray-700 text-center leading-tight"
+            >HandBags</span
+          >
+        </a>
+        <a
+          href="category.html?cat=Jwellery"
+          class="group flex flex-col items-center gap-2 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition card-hover border border-pink-50"
+        >
+          <span
+            class="text-3xl group-hover:scale-110 transition-transform duration-200"
+            >💍</span
+          >
+          <span
+            class="text-xs font-semibold text-gray-700 text-center leading-tight"
+            >Jwellery</span
+          >
+        </a>
+        <a
+          href="category.html?cat=Makeup"
+          class="group flex flex-col items-center gap-2 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition card-hover border border-pink-50"
+        >
+          <span
+            class="text-3xl group-hover:scale-110 transition-transform duration-200"
+            >💄</span
+          >
+          <span
+            class="text-xs font-semibold text-gray-700 text-center leading-tight"
+            >Makeup</span
+          >
+        </a>
+        <a
+          href="category.html?cat=Skin Care"
+          class="group flex flex-col items-center gap-2 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition card-hover border border-pink-50"
+        >
+          <span
+            class="text-3xl group-hover:scale-110 transition-transform duration-200"
+            >🌿</span
+          >
+          <span
+            class="text-xs font-semibold text-gray-700 text-center leading-tight"
+            >Skin Care</span
+          >
         </a>
       </div>
-      <div>
-        <h4 class="text-white font-semibold mb-4 serif">Shop</h4>
-        <ul class="space-y-2 text-sm">
-          <li><a href="category.html?cat=Ready To Wear" class="hover:text-[#C2185B] transition">Ready To Wear</a></li>
-          <li><a href="category.html?cat=Formal" class="hover:text-[#C2185B] transition">Formal Dresses</a></li>
-          <li><a href="category.html?cat=HandBags" class="hover:text-[#C2185B] transition">HandBags</a></li>
-          <li><a href="category.html?cat=Jwellery" class="hover:text-[#C2185B] transition">Jwellery</a></li>
-          <li><a href="category.html?cat=Makeup" class="hover:text-[#C2185B] transition">Makeup</a></li>
-          <li><a href="category.html?cat=Skin Care" class="hover:text-[#C2185B] transition">Skin Care</a></li>
-        </ul>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="products-section" class="max-w-7xl mx-auto px-4 sm:px-6 pb-12">
+      <div class="text-center mb-8 fade-in">
+        <p
+          class="text-xs font-semibold text-[#C2185B] tracking-widest uppercase mb-1"
+        >
+          Hand-picked
+        </p>
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 serif">
+          Featured Products
+        </h2>
+        <div class="w-12 h-1 bg-[#C2185B] mx-auto mt-3 rounded-full"></div>
       </div>
-      <div>
-        <h4 class="text-white font-semibold mb-4 serif">Contact</h4>
-        <ul class="space-y-3 text-sm">
-          <li class="flex items-center gap-2">
-            <span>📱</span>
-            <a href="https://wa.me/923226135815" class="hover:text-[#C2185B] transition">+92 322 6135815</a>
-          </li>
-          <li class="flex items-center gap-2">
-            <span>🚚</span>
-            <span>Delivery all over Pakistan</span>
-          </li>
-          <li class="flex items-center gap-2">
-            <span>⏰</span>
-            <span>Orders: 24/7 via WhatsApp</span>
-          </li>
-        </ul>
+      <div
+        id="products"
+        class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5"
+      ></div>
+      <div class="text-center mt-10 fade-in">
+        <p class="text-sm text-gray-500 mb-3">
+          Looking for something specific?
+        </p>
+        <a
+          href="https://wa.me/923226135815"
+          target="_blank"
+          class="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#1ebe5d] transition shadow-md"
+        >
+          <svg class="w-5 h-5 fill-white" viewBox="0 0 32 32">
+            <path
+              d="M16.001 2.667c-7.373 0-13.334 5.961-13.334 13.333 0 2.352.614 4.646 1.781 6.667l-1.875 6.854 7.021-1.84c1.979 1.083 4.213 1.652 6.407 1.652 7.373 0 13.333-5.961 13.333-13.333s-5.96-13.333-13.333-13.333zm0 24c-1.994 0-3.946-.521-5.667-1.507l-.406-.233-4.166 1.093 1.114-4.062-.264-.417c-1.081-1.71-1.652-3.678-1.652-5.707 0-5.894 4.773-10.667 10.667-10.667s10.667 4.773 10.667 10.667-4.773 10.667-10.667 10.667zm5.84-7.973c-.32-.16-1.893-.933-2.187-.96-.293-.053-.507-.08-.72.08s-.827.96-1.013 1.157c-.187.213-.373.24-.693.08-.32-.16-1.347-.493-2.56-1.573-.947-.84-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.144-.16.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.373-.26-.62-.533-.533-.72-.547l-.613-.013c-.213 0-.56.08-.853.4s-1.12 1.093-1.12 2.667 1.147 3.093 1.307 3.307c.16.213 2.253 3.44 5.467 4.827.763.333 1.36.533 1.827.693.773.24 1.467.213 2.02.133.613-.08 1.893-.773 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"
+            />
+          </svg>
+          Ask on WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- Order Form Modal -->
+    <div
+      id="orderModal"
+      class="hidden fixed inset-0 bg-black/60 z-[60] flex items-end sm:items-center justify-center p-0 sm:p-4"
+    >
+      <div
+        class="bg-white rounded-t-3xl sm:rounded-2xl shadow-2xl w-full sm:max-w-md max-h-[92vh] overflow-y-auto"
+      >
+        <div
+          class="flex justify-between items-center p-5 border-b border-pink-50 sticky top-0 bg-white z-10 rounded-t-3xl sm:rounded-t-2xl"
+        >
+          <div>
+            <h3 class="text-lg font-bold text-gray-800 serif">
+              Place Your Order
+            </h3>
+            <p class="text-xs text-gray-400">Fill in your delivery details</p>
+          </div>
+          <button
+            id="closeOrderModal"
+            class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#FFF0F5] text-gray-500 hover:text-[#C2185B] transition text-lg"
+          >
+            ✕
+          </button>
+        </div>
+        <div
+          id="orderSummary"
+          class="px-5 py-3 bg-[#FFF5F8] border-b border-pink-100 space-y-2"
+        ></div>
+        <form id="orderForm" class="p-5 space-y-4">
+          <div>
+            <label class="text-xs font-semibold text-gray-600 mb-1 block"
+              >Full Name *</label
+            >
+            <input
+              id="o-name"
+              type="text"
+              placeholder="Enter your full name"
+              required
+              class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B]"
+            />
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-gray-600 mb-1 block"
+              >Phone Number *</label
+            >
+            <input
+              id="o-phone"
+              type="tel"
+              placeholder="e.g. 0321 1234567"
+              required
+              class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B]"
+            />
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-gray-600 mb-1 block"
+              >Complete Address *</label
+            >
+            <textarea
+              id="o-address"
+              rows="2"
+              placeholder="House/Flat No., Street, Area..."
+              required
+              class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B] resize-none"
+            ></textarea>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="text-xs font-semibold text-gray-600 mb-1 block"
+                >City *</label
+              >
+              <input
+                id="o-city"
+                type="text"
+                placeholder="e.g. Karachi"
+                required
+                class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B]"
+              />
+            </div>
+            <div>
+              <label class="text-xs font-semibold text-gray-600 mb-1 block"
+                >Postal Code</label
+              >
+              <input
+                id="o-zip"
+                type="text"
+                placeholder="e.g. 75600"
+                class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B]"
+              />
+            </div>
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-gray-600 mb-2 block"
+              >Payment Method *</label
+            >
+            <div class="grid grid-cols-2 gap-2">
+              <label
+                class="flex items-center gap-2 border rounded-xl p-3 cursor-pointer hover:border-[#C2185B] transition"
+              >
+                <input
+                  type="radio"
+                  name="o-payment"
+                  value="EasyPaisa"
+                  class="accent-[#C2185B]"
+                  required
+                />
+                <span class="text-sm font-medium text-gray-700"
+                  >💚 EasyPaisa</span
+                >
+              </label>
+              <label
+                class="flex items-center gap-2 border rounded-xl p-3 cursor-pointer hover:border-[#C2185B] transition"
+              >
+                <input
+                  type="radio"
+                  name="o-payment"
+                  value="JazzCash"
+                  class="accent-[#C2185B]"
+                />
+                <span class="text-sm font-medium text-gray-700"
+                  >🔴 JazzCash</span
+                >
+              </label>
+              <label
+                class="flex items-center gap-2 border rounded-xl p-3 cursor-pointer hover:border-[#C2185B] transition"
+              >
+                <input
+                  type="radio"
+                  name="o-payment"
+                  value="Bank Transfer"
+                  class="accent-[#C2185B]"
+                />
+                <span class="text-sm font-medium text-gray-700"
+                  >🏦 Bank Transfer</span
+                >
+              </label>
+            </div>
+          </div>
+          <button
+            type="submit"
+            id="placeOrderBtn"
+            class="bg-[#C2185B] text-white w-full py-3.5 rounded-xl font-semibold hover:bg-[#AD1457] flex items-center justify-center gap-2 text-sm shadow-md"
+          >
+            <svg class="w-5 h-5 fill-white" viewBox="0 0 32 32">...</svg>
+            Confirm Order
+          </button>
+        </form>
       </div>
     </div>
-    <div class="border-t border-white/10 text-center py-4 text-xs text-gray-600">
-      © 2025 Aneeba's Collection. All Rights Reserved. &nbsp;|&nbsp; Made with 🌸 for fashion lovers
+
+    <!-- Cart Sidebar -->
+    <div
+      id="cartSidebar"
+      class="hidden fixed top-0 right-0 w-full sm:w-[380px] h-full bg-white shadow-2xl z-50"
+    >
+      <div
+        class="flex justify-between items-center p-5 border-b border-pink-50"
+      >
+        <div>
+          <h3 class="text-lg font-bold text-gray-800 serif">Your Cart</h3>
+          <p id="cartSubtitle" class="text-xs text-gray-400">0 items</p>
+        </div>
+        <button
+          id="closeCart"
+          class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#FFF0F5] text-gray-500 hover:text-[#C2185B] transition text-lg"
+        >
+          ✕
+        </button>
+      </div>
+      <div
+        id="cartItems"
+        class="p-4 space-y-3 overflow-y-auto"
+        style="height: calc(100% - 176px)"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 right-0 p-4 bg-white border-t border-pink-50"
+      >
+        <div class="flex justify-between items-center mb-3">
+          <span class="font-semibold text-gray-700">Total</span>
+          <span class="text-xl font-bold text-[#C2185B]"
+            >Rs <span id="cartTotal">0</span></span
+          >
+        </div>
+        <button
+          id="orderBtn"
+          class="bg-[#C2185B] text-white w-full py-3 rounded-xl font-semibold hover:bg-[#AD1457] transition flex items-center justify-center gap-2 shadow-md"
+        >
+          <svg class="w-5 h-5 fill-white" viewBox="0 0 32 32">...</svg>
+          Place Your Order
+        </button>
+      </div>
     </div>
-  </footer>
+    <div id="cartOverlay" class="hidden fixed inset-0 bg-black/40 z-40"></div>
 
-  <!-- Floating WhatsApp -->
-  <a href="https://wa.me/923226135815" target="_blank"
-     class="fixed bottom-6 right-6 bg-[#25D366] hover:bg-[#1ebe5d] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl z-40 transition transform hover:scale-110">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-7 h-7 fill-white">
-      <path d="M16.001 2.667c-7.373 0-13.334 5.961-13.334 13.333 0 2.352.614 4.646 1.781 6.667l-1.875 6.854 7.021-1.84c1.979 1.083 4.213 1.652 6.407 1.652 7.373 0 13.333-5.961 13.333-13.333s-5.96-13.333-13.333-13.333zm0 24c-1.994 0-3.946-.521-5.667-1.507l-.406-.233-4.166 1.093 1.114-4.062-.264-.417c-1.081-1.71-1.652-3.678-1.652-5.707 0-5.894 4.773-10.667 10.667-10.667s10.667 4.773 10.667 10.667-4.773 10.667-10.667 10.667zm5.84-7.973c-.32-.16-1.893-.933-2.187-.96-.293-.053-.507-.08-.72.08s-.827.96-1.013 1.157c-.187.213-.373.24-.693.08-.32-.16-1.347-.493-2.56-1.573-.947-.84-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.144-.16.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.373-.26-.62-.533-.533-.72-.547l-.613-.013c-.213 0-.56.08-.853.4s-1.12 1.093-1.12 2.667 1.147 3.093 1.307 3.307c.16.213 2.253 3.44 5.467 4.827.763.333 1.36.533 1.827.693.773.24 1.467.213 2.02.133.613-.08 1.893-.773 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"/>
-    </svg>
-  </a>
+    <!-- Footer -->
+    <footer class="bg-[#1A1A1A] text-gray-400 mt-6">
+      <div
+        class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-3 gap-10"
+      >
+        <div>
+          <img src="/logo.png" alt="Logo" class="h-16 object-contain mb-3" />
+          <p class="text-sm text-gray-500 leading-relaxed">
+            Your one-stop shop for fashion &amp; beauty in Pakistan. Authentic
+            products, fast delivery.
+          </p>
+          <a
+            href="https://wa.me/923226135815"
+            target="_blank"
+            class="mt-4 inline-flex items-center gap-2 bg-[#25D366] text-white text-sm px-4 py-2 rounded-full hover:bg-[#1ebe5d] transition font-medium"
+          >
+            <svg class="w-4 h-4 fill-white" viewBox="0 0 32 32">
+              <path
+                d="M16.001 2.667c-7.373 0-13.334 5.961-13.334 13.333 0 2.352.614 4.646 1.781 6.667l-1.875 6.854 7.021-1.84c1.979 1.083 4.213 1.652 6.407 1.652 7.373 0 13.333-5.961 13.333-13.333s-5.96-13.333-13.333-13.333zm0 24c-1.994 0-3.946-.521-5.667-1.507l-.406-.233-4.166 1.093 1.114-4.062-.264-.417c-1.081-1.71-1.652-3.678-1.652-5.707 0-5.894 4.773-10.667 10.667-10.667s10.667 4.773 10.667 10.667-4.773 10.667-10.667 10.667zm5.84-7.973c-.32-.16-1.893-.933-2.187-.96-.293-.053-.507-.08-.72.08s-.827.96-1.013 1.157c-.187.213-.373.24-.693.08-.32-.16-1.347-.493-2.56-1.573-.947-.84-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.144-.16.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.373-.26-.62-.533-.533-.72-.547l-.613-.013c-.213 0-.56.08-.853.4s-1.12 1.093-1.12 2.667 1.147 3.093 1.307 3.307c.16.213 2.253 3.44 5.467 4.827.763.333 1.36.533 1.827.693.773.24 1.467.213 2.02.133.613-.08 1.893-.773 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"
+              />
+            </svg>
+            Chat on WhatsApp
+          </a>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4 serif">Shop</h4>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a
+                href="category.html?cat=Ready To Wear"
+                class="hover:text-[#C2185B] transition"
+                >Ready To Wear</a
+              >
+            </li>
+            <li>
+              <a
+                href="category.html?cat=Formal"
+                class="hover:text-[#C2185B] transition"
+                >Formal Dresses</a
+              >
+            </li>
+            <li>
+              <a
+                href="category.html?cat=HandBags"
+                class="hover:text-[#C2185B] transition"
+                >HandBags</a
+              >
+            </li>
+            <li>
+              <a
+                href="category.html?cat=Jwellery"
+                class="hover:text-[#C2185B] transition"
+                >Jwellery</a
+              >
+            </li>
+            <li>
+              <a
+                href="category.html?cat=Makeup"
+                class="hover:text-[#C2185B] transition"
+                >Makeup</a
+              >
+            </li>
+            <li>
+              <a
+                href="category.html?cat=Skin Care"
+                class="hover:text-[#C2185B] transition"
+                >Skin Care</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4 serif">Contact</h4>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center gap-2">
+              <span>📱</span>
+              <a
+                href="https://wa.me/923226135815"
+                class="hover:text-[#C2185B] transition"
+                >+92 322 6135815</a
+              >
+            </li>
+            <li class="flex items-center gap-2">
+              <span>🚚</span>
+              <span>Delivery all over Pakistan</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span>⏰</span>
+              <span>Orders: 24/7 via WhatsApp</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="border-t border-white/10 text-center py-4 text-xs text-gray-600"
+      >
+        © 2025 Aneeba's Collection. All Rights Reserved. &nbsp;|&nbsp; Made
+        with 🌸 for fashion lovers
+      </div>
+    </footer>
 
-<script type="module">
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, query, orderBy, limit, getDoc, doc, addDoc, serverTimestamp } from "firebase/firestore";
+    <!-- Floating WhatsApp -->
+    <a
+      href="https://wa.me/923226135815"
+      target="_blank"
+      class="fixed bottom-6 right-6 bg-[#25D366] hover:bg-[#1ebe5d] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl z-40 transition transform hover:scale-110"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 32 32"
+        class="w-7 h-7 fill-white"
+      >
+        <path
+          d="M16.001 2.667c-7.373 0-13.334 5.961-13.334 13.333 0 2.352.614 4.646 1.781 6.667l-1.875 6.854 7.021-1.84c1.979 1.083 4.213 1.652 6.407 1.652 7.373 0 13.333-5.961 13.333-13.333s-5.96-13.333-13.333-13.333zm0 24c-1.994 0-3.946-.521-5.667-1.507l-.406-.233-4.166 1.093 1.114-4.062-.264-.417c-1.081-1.71-1.652-3.678-1.652-5.707 0-5.894 4.773-10.667 10.667-10.667s10.667 4.773 10.667 10.667-4.773 10.667-10.667 10.667zm5.84-7.973c-.32-.16-1.893-.933-2.187-.96-.293-.053-.507-.08-.72.08s-.827.96-1.013 1.157c-.187.213-.373.24-.693.08-.32-.16-1.347-.493-2.56-1.573-.947-.84-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.144-.16.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.373-.26-.62-.533-.533-.72-.547l-.613-.013c-.213 0-.56.08-.853.4s-1.12 1.093-1.12 2.667 1.147 3.093 1.307 3.307c.16.213 2.253 3.44 5.467 4.827.763.333 1.36.533 1.827.693.773.24 1.467.213 2.02.133.613-.08 1.893-.773 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"
+        />
+      </svg>
+    </a>
 
-const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+    <script type="module">
+      import { initializeApp } from "firebase/app";
+      import {
+        getFirestore,
+        collection,
+        getDocs,
+        query,
+        orderBy,
+        limit,
+        getDoc,
+        doc,
+        addDoc,
+        serverTimestamp,
+      } from "firebase/firestore";
 
-let cart = [];
-let allProducts = [];
-const NOW = Date.now();
-const SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000;
+      const firebaseConfig = {
+        apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+        authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+        projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+        storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+        appId: import.meta.env.VITE_FIREBASE_APP_ID,
+      };
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
 
-// Helpers
-function isNew(p) {
-  if (!p.createdAt) return false;
-  const t = p.createdAt.toMillis ? p.createdAt.toMillis() : p.createdAt * 1000;
-  return NOW - t < SEVEN_DAYS;
-}
-function discPrice(p) {
-  return p.discount ? Math.round(p.price - p.price * p.discount / 100) : null;
-}
+      let cart = [];
+      let allProducts = [];
+      const NOW = Date.now();
+      const SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000;
 
-// --- Fade-in on scroll ---
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+      // Helpers
+      function isNew(p) {
+        if (!p.createdAt) return false;
+        const t = p.createdAt.toMillis
+          ? p.createdAt.toMillis()
+          : p.createdAt * 1000;
+        return NOW - t < SEVEN_DAYS;
+      }
+      function discPrice(p) {
+        return p.discount
+          ? Math.round(p.price - (p.price * p.discount) / 100)
+          : null;
+      }
 
-// --- Mobile Menu ---
-document.getElementById('menuBtn').onclick = () =>
-  document.getElementById('mobileMenu').classList.toggle('hidden');
-window.toggleMobileSub = (name) => {
-  const sub = document.getElementById('sub-' + name);
-  const arrow = document.getElementById('arrow-' + name);
-  sub.classList.toggle('hidden');
-  arrow.textContent = sub.classList.contains('hidden') ? '▼' : '▲';
-};
+      // --- Fade-in on scroll ---
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.12 },
+      );
+      document
+        .querySelectorAll(".fade-in")
+        .forEach((el) => observer.observe(el));
 
-// --- Search ---
-const searchOverlay = document.getElementById('searchOverlay');
-const searchInput = document.getElementById('searchInput');
-document.getElementById('searchBtn').onclick = () => {
-  searchOverlay.classList.remove('hidden');
-  setTimeout(() => searchInput.focus(), 100);
-};
-document.getElementById('closeSearch').onclick = () => searchOverlay.classList.add('hidden');
-searchOverlay.onclick = (e) => { if (e.target === searchOverlay) searchOverlay.classList.add('hidden'); };
+      // --- Mobile Menu ---
+      document.getElementById("menuBtn").onclick = () =>
+        document.getElementById("mobileMenu").classList.toggle("hidden");
+      window.toggleMobileSub = (name) => {
+        const sub = document.getElementById("sub-" + name);
+        const arrow = document.getElementById("arrow-" + name);
+        sub.classList.toggle("hidden");
+        arrow.textContent = sub.classList.contains("hidden") ? "▼" : "▲";
+      };
 
-searchInput.oninput = () => {
-  const q = searchInput.value.toLowerCase().trim();
-  const res = document.getElementById('searchResults');
-  if (!q) { res.innerHTML = ''; return; }
-  const found = allProducts.filter(p =>
-    p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)
-  );
-  if (!found.length) {
-    res.innerHTML = `<p class="text-center text-gray-400 text-sm py-4">No products found</p>`;
-    return;
-  }
-  res.innerHTML = found.slice(0, 6).map(p => {
-    const price = discPrice(p) ?? p.price;
-    return `
-      <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-[#FFF0F5] cursor-pointer transition" onclick="addToCart(${JSON.stringify(p).replace(/'/g,"&apos;")});document.getElementById('searchOverlay').classList.add('hidden')">
+      // --- Search ---
+      const searchOverlay = document.getElementById("searchOverlay");
+      const searchInput = document.getElementById("searchInput");
+      document.getElementById("searchBtn").onclick = () => {
+        searchOverlay.classList.remove("hidden");
+        setTimeout(() => searchInput.focus(), 100);
+      };
+      document.getElementById("closeSearch").onclick = () =>
+        searchOverlay.classList.add("hidden");
+      searchOverlay.onclick = (e) => {
+        if (e.target === searchOverlay) searchOverlay.classList.add("hidden");
+      };
+
+      searchInput.oninput = () => {
+        const q = searchInput.value.toLowerCase().trim();
+        const res = document.getElementById("searchResults");
+        if (!q) {
+          res.innerHTML = "";
+          return;
+        }
+        const found = allProducts.filter(
+          (p) =>
+            p.name.toLowerCase().includes(q) ||
+            p.category.toLowerCase().includes(q),
+        );
+        if (!found.length) {
+          res.innerHTML = `<p class="text-center text-gray-400 text-sm py-4">No products found</p>`;
+          return;
+        }
+        res.innerHTML = found
+          .slice(0, 6)
+          .map((p) => {
+            const price = discPrice(p) ?? p.price;
+            return `
+      <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-[#FFF0F5] cursor-pointer transition" onclick="addToCart(${JSON.stringify(p).replace(/'/g, "&apos;")});document.getElementById('searchOverlay').classList.add('hidden')">
         <img src="${p.images[0]}" class="w-12 h-12 object-cover rounded-lg flex-shrink-0">
         <div class="flex-1 min-w-0">
           <p class="font-medium text-sm text-gray-800 truncate">${p.name}</p>
@@ -456,12 +1085,15 @@ searchInput.oninput = () => {
         </div>
         <span class="text-[#C2185B] font-bold text-sm flex-shrink-0">Rs ${price}</span>
       </div>`;
-  }).join('');
-};
+          })
+          .join("");
+      };
 
-// --- Products ---
-function showSkeletons() {
-  document.getElementById('products').innerHTML = Array(8).fill(`
+      // --- Products ---
+      function showSkeletons() {
+        document.getElementById("products").innerHTML = Array(8)
+          .fill(
+            `
     <div class="bg-white rounded-2xl overflow-hidden shadow-sm">
       <div class="skeleton h-52"></div>
       <div class="p-4 space-y-2">
@@ -469,87 +1101,98 @@ function showSkeletons() {
         <div class="skeleton h-3 rounded w-1/2"></div>
         <div class="skeleton h-8 rounded-lg mt-3"></div>
       </div>
-    </div>`).join('');
-}
+    </div>`,
+          )
+          .join("");
+      }
 
-async function loadProducts() {
-  showSkeletons();
-  const q = query(collection(db, "products"), orderBy("createdAt", "desc"), limit(12));
-  const snap = await getDocs(q);
-  allProducts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-  renderProducts(allProducts);
-}
+      async function loadProducts() {
+        showSkeletons();
+        const q = query(
+          collection(db, "products"),
+          orderBy("createdAt", "desc"),
+          limit(12),
+        );
+        const snap = await getDocs(q);
+        allProducts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+        renderProducts(allProducts);
+      }
 
-function productCard(p) {
-  const dp = discPrice(p);
-  return `
+      function productCard(p) {
+        const dp = discPrice(p);
+        return `
     <div class="bg-white rounded-2xl shadow-sm overflow-hidden card-hover fade-in border border-pink-50/60">
       <a href="product.html?id=${p.id}" class="block relative overflow-hidden">
         <img src="${p.images[0]}" loading="lazy" class="w-full h-48 sm:h-56 object-cover hover:scale-105 transition duration-500">
-        ${isNew(p) ? `<span class="absolute top-2 left-2 bg-[#C2185B] text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">NEW</span>` : ''}
-        ${p.discount ? `<span class="absolute top-2 right-2 bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">${p.discount}% OFF</span>` : ''}
-        ${p.images.length > 1 ? `<span class="absolute bottom-2 right-2 bg-black/50 text-white text-[10px] px-1.5 py-0.5 rounded-full">+${p.images.length - 1}</span>` : ''}
+        ${isNew(p) ? `<span class="absolute top-2 left-2 bg-[#C2185B] text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">NEW</span>` : ""}
+        ${p.discount ? `<span class="absolute top-2 right-2 bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">${p.discount}% OFF</span>` : ""}
+        ${p.images.length > 1 ? `<span class="absolute bottom-2 right-2 bg-black/50 text-white text-[10px] px-1.5 py-0.5 rounded-full">+${p.images.length - 1}</span>` : ""}
       </a>
       <div class="p-3 sm:p-4">
         <a href="product.html?id=${p.id}">
           <h3 class="font-semibold text-sm text-gray-800 line-clamp-1 mb-0.5 hover:text-[#C2185B] transition">${p.name}</h3>
         </a>
         <p class="text-[11px] text-gray-400 mb-1">${p.category}</p>
-        ${p.description ? `<p class="text-[11px] text-gray-400 line-clamp-2 mb-2">${p.description}</p>` : ''}
+        ${p.description ? `<p class="text-[11px] text-gray-400 line-clamp-2 mb-2">${p.description}</p>` : ""}
         <div class="flex items-center gap-2 mb-3">
           <span class="text-[#C2185B] font-bold text-base">Rs ${dp ?? p.price}</span>
-          ${dp ? `<span class="text-gray-300 line-through text-xs">Rs ${p.price}</span>` : ''}
+          ${dp ? `<span class="text-gray-300 line-through text-xs">Rs ${p.price}</span>` : ""}
         </div>
         <div class="flex gap-2">
           <a href="product.html?id=${p.id}"
             class="flex-1 border border-[#C2185B] text-[#C2185B] py-2 rounded-xl hover:bg-[#FFF0F5] text-xs sm:text-sm font-semibold transition text-center">
             View
           </a>
-          <button onclick='addToCart(${JSON.stringify(p).replace(/'/g,"&apos;")})'
+          <button onclick='addToCart(${JSON.stringify(p).replace(/'/g, "&apos;")})'
             class="flex-1 bg-[#C2185B] text-white py-2 rounded-xl hover:bg-[#AD1457] text-xs sm:text-sm font-semibold transition">
             Add to Cart
           </button>
         </div>
       </div>
     </div>`;
-}
+      }
 
-function renderProducts(products) {
-  const el = document.getElementById("products");
-  if (!products.length) {
-    el.innerHTML = `<div class="col-span-2 sm:col-span-4 text-center py-16">
+      function renderProducts(products) {
+        const el = document.getElementById("products");
+        if (!products.length) {
+          el.innerHTML = `<div class="col-span-2 sm:col-span-4 text-center py-16">
       <p class="text-4xl mb-3">🛍️</p>
       <p class="text-gray-400">No products yet. Check back soon!</p>
     </div>`;
-    return;
-  }
-  el.innerHTML = products.map(p => productCard(p)).join('');
-  el.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-}
+          return;
+        }
+        el.innerHTML = products.map((p) => productCard(p)).join("");
+        el.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+      }
 
-// --- Cart ---
-window.addToCart = (product) => {
-  cart.push(product);
-  updateCartUI();
-  showToast(`${product.name} added! 🛍️`);
-};
-window.removeFromCart = (i) => { cart.splice(i, 1); updateCartUI(); };
+      // --- Cart ---
+      window.addToCart = (product) => {
+        cart.push(product);
+        updateCartUI();
+        showToast(`${product.name} added! 🛍️`);
+      };
+      window.removeFromCart = (i) => {
+        cart.splice(i, 1);
+        updateCartUI();
+      };
 
-function updateCartUI() {
-  const count = cart.length;
-  document.getElementById('cartCount').textContent = count;
-  document.getElementById('cartSubtitle').textContent = `${count} item${count !== 1 ? 's' : ''}`;
+      function updateCartUI() {
+        const count = cart.length;
+        document.getElementById("cartCount").textContent = count;
+        document.getElementById("cartSubtitle").textContent =
+          `${count} item${count !== 1 ? "s" : ""}`;
 
-  if (!count) {
-    document.getElementById('cartItems').innerHTML =
-      `<div class="text-center py-16"><p class="text-4xl mb-3">🛒</p><p class="text-gray-400 text-sm">Your cart is empty</p></div>`;
-    document.getElementById('cartTotal').textContent = '0';
-    return;
-  }
+        if (!count) {
+          document.getElementById("cartItems").innerHTML =
+            `<div class="text-center py-16"><p class="text-4xl mb-3">🛒</p><p class="text-gray-400 text-sm">Your cart is empty</p></div>`;
+          document.getElementById("cartTotal").textContent = "0";
+          return;
+        }
 
-  document.getElementById('cartItems').innerHTML = cart.map((item, i) => {
-    const price = discPrice(item) ?? item.price;
-    return `
+        document.getElementById("cartItems").innerHTML = cart
+          .map((item, i) => {
+            const price = discPrice(item) ?? item.price;
+            return `
       <div class="flex gap-3 pb-3 border-b border-pink-50">
         <img src="${item.images[0]}" class="w-18 h-18 w-[72px] h-[72px] object-cover rounded-xl flex-shrink-0">
         <div class="flex-1 min-w-0">
@@ -559,118 +1202,156 @@ function updateCartUI() {
           <button onclick="removeFromCart(${i})" class="text-red-400 text-xs hover:text-red-600 transition mt-0.5">Remove</button>
         </div>
       </div>`;
-  }).join('');
+          })
+          .join("");
 
-  const total = cart.reduce((s, item) => s + Number(discPrice(item) ?? item.price), 0);
-  document.getElementById('cartTotal').textContent = total;
-}
+        const total = cart.reduce(
+          (s, item) => s + Number(discPrice(item) ?? item.price),
+          0,
+        );
+        document.getElementById("cartTotal").textContent = total;
+      }
 
-document.getElementById('cartBtn').onclick = () => {
-  document.getElementById('cartSidebar').classList.remove('hidden');
-  document.getElementById('cartOverlay').classList.remove('hidden');
-};
-const closeCart = () => {
-  document.getElementById('cartSidebar').classList.add('hidden');
-  document.getElementById('cartOverlay').classList.add('hidden');
-};
-document.getElementById('closeCart').onclick = closeCart;
-document.getElementById('cartOverlay').onclick = closeCart;
+      document.getElementById("cartBtn").onclick = () => {
+        document.getElementById("cartSidebar").classList.remove("hidden");
+        document.getElementById("cartOverlay").classList.remove("hidden");
+      };
+      const closeCart = () => {
+        document.getElementById("cartSidebar").classList.add("hidden");
+        document.getElementById("cartOverlay").classList.add("hidden");
+      };
+      document.getElementById("closeCart").onclick = closeCart;
+      document.getElementById("cartOverlay").onclick = closeCart;
 
-document.getElementById('orderBtn').onclick = () => {
-  if (!cart.length) return;
-  closeCart();
-  showOrderModal(cart);
-};
+      document.getElementById("orderBtn").onclick = () => {
+        if (!cart.length) return;
+        closeCart();
+        showOrderModal(cart);
+      };
 
-// --- Order Modal ---
-const orderModal = document.getElementById('orderModal');
-document.getElementById('closeOrderModal').onclick = () => orderModal.classList.add('hidden');
-orderModal.onclick = (e) => { if (e.target === orderModal) orderModal.classList.add('hidden'); };
+      // --- Order Modal ---
+      const orderModal = document.getElementById("orderModal");
+      document.getElementById("closeOrderModal").onclick = () =>
+        orderModal.classList.add("hidden");
+      orderModal.onclick = (e) => {
+        if (e.target === orderModal) orderModal.classList.add("hidden");
+      };
 
-function showOrderModal(items) {
-  const total = items.reduce((s, item) => s + (discPrice(item) ?? item.price), 0);
-  document.getElementById('orderSummary').innerHTML = `
+      function showOrderModal(items) {
+        const total = items.reduce(
+          (s, item) => s + (discPrice(item) ?? item.price),
+          0,
+        );
+        document.getElementById("orderSummary").innerHTML = `
     <div class="flex justify-between items-center mb-1">
-      <span class="text-xs font-semibold text-gray-600">${items.length} item${items.length !== 1 ? 's' : ''}</span>
+      <span class="text-xs font-semibold text-gray-600">${items.length} item${items.length !== 1 ? "s" : ""}</span>
       <span class="text-[#C2185B] font-bold text-sm">Total: Rs ${total}</span>
     </div>
-    ${items.map(item => `
+    ${items
+      .map(
+        (item) => `
       <div class="flex items-center gap-2">
         <img src="${item.images[0]}" class="w-10 h-10 object-cover rounded-lg flex-shrink-0">
         <div class="flex-1 min-w-0">
           <p class="text-xs font-semibold text-gray-700 truncate">${item.name}</p>
           <p class="text-xs text-gray-400">Rs ${discPrice(item) ?? item.price}</p>
         </div>
-      </div>`).join('')}`;
-  orderModal.dataset.items = JSON.stringify(items);
-  orderModal.classList.remove('hidden');
-  document.getElementById('o-name').focus();
-}
+      </div>`,
+      )
+      .join("")}`;
+        orderModal.dataset.items = JSON.stringify(items);
+        orderModal.classList.remove("hidden");
+        document.getElementById("o-name").focus();
+      }
 
-document.getElementById('orderForm').onsubmit = async (e) => {
-  e.preventDefault();
-  const btn = document.getElementById('placeOrderBtn');
-  const items = JSON.parse(orderModal.dataset.items || '[]');
-  const payment = document.querySelector('input[name="o-payment"]:checked')?.value;
-  if (!payment) { alert('Please select a payment method'); return; }
+      document.getElementById("orderForm").onsubmit = async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById("placeOrderBtn");
+        const items = JSON.parse(orderModal.dataset.items || "[]");
+        const payment = document.querySelector(
+          'input[name="o-payment"]:checked',
+        )?.value;
+        if (!payment) {
+          alert("Please select a payment method");
+          return;
+        }
 
-  const name    = document.getElementById('o-name').value.trim();
-  const phone   = document.getElementById('o-phone').value.trim();
-  const address = document.getElementById('o-address').value.trim();
-  const city    = document.getElementById('o-city').value.trim();
-  const zip     = document.getElementById('o-zip').value.trim();
-  const total   = items.reduce((s, item) => s + (discPrice(item) ?? item.price), 0);
+        const name = document.getElementById("o-name").value.trim();
+        const phone = document.getElementById("o-phone").value.trim();
+        const address = document.getElementById("o-address").value.trim();
+        const city = document.getElementById("o-city").value.trim();
+        const zip = document.getElementById("o-zip").value.trim();
+        const total = items.reduce(
+          (s, item) => s + (discPrice(item) ?? item.price),
+          0,
+        );
 
-  btn.disabled = true;
-  btn.textContent = 'Saving order...';
+        btn.disabled = true;
+        btn.textContent = "Saving order...";
 
-  try {
-    await addDoc(collection(db, "orders"), {
-      customerName: name, phone, address, city, zipCode: zip,
-      paymentMethod: payment,
-      items: items.map(item => ({
-        id: item.id, name: item.name, category: item.category,
-        price: discPrice(item) ?? item.price, image: item.images[0]
-      })),
-      total, status: 'new', createdAt: serverTimestamp()
-    });
-  } catch (err) { console.error('Order save error:', err); }
+        try {
+          await addDoc(collection(db, "orders"), {
+            customerName: name,
+            phone,
+            address,
+            city,
+            zipCode: zip,
+            paymentMethod: payment,
+            items: items.map((item) => ({
+              id: item.id,
+              name: item.name,
+              category: item.category,
+              price: discPrice(item) ?? item.price,
+              image: item.images[0],
+            })),
+            total,
+            status: "new",
+            createdAt: serverTimestamp(),
+          });
+        } catch (err) {
+          console.error("Order save error:", err);
+        }
 
-  let msg = `🛍️ *New Order – Aneeba's Collection*\n\n`;
-  msg += `👤 *Name:* ${name}\n📱 *Phone:* ${phone}\n`;
-  msg += `🏠 *Address:* ${address}, ${city}${zip ? ', ' + zip : ''}\n`;
-  msg += `💳 *Payment:* ${payment}\n\n*Items:*\n`;
-  items.forEach((item, i) => {
-    msg += `${i + 1}. ${item.name} – Rs ${discPrice(item) ?? item.price}\n`;
-  });
-  msg += `\n*Total: Rs ${total}*`;
+        let msg = `🛍️ *New Order – Aneeba's Collection*\n\n`;
+        msg += `👤 *Name:* ${name}\n📱 *Phone:* ${phone}\n`;
+        msg += `🏠 *Address:* ${address}, ${city}${zip ? ", " + zip : ""}\n`;
+        msg += `💳 *Payment:* ${payment}\n\n*Items:*\n`;
+        items.forEach((item, i) => {
+          msg += `${i + 1}. ${item.name} – Rs ${discPrice(item) ?? item.price}\n`;
+        });
+        msg += `\n*Total: Rs ${total}*`;
 
-  orderModal.classList.add('hidden');
-  cart = []; updateCartUI();
-  document.getElementById('orderForm').reset();
-  btn.disabled = false;
-  btn.textContent = 'Confirm & Send to WhatsApp';
-  window.open(`https://wa.me/923226135815?text=${encodeURIComponent(msg)}`);
-  showToast('Order placed! Opening WhatsApp 🎉');
-};
+        orderModal.classList.add("hidden");
+        cart = [];
+        updateCartUI();
+        document.getElementById("orderForm").reset();
+        btn.disabled = false;
+        btn.textContent = "Confirm Order";
+       
+      };
 
-// --- Toast ---
-function showToast(message) {
-  const t = document.createElement('div');
-  t.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-5 py-3 rounded-full shadow-xl z-50 text-sm font-medium flex items-center gap-2';
-  t.textContent = message;
-  document.body.appendChild(t);
-  setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity .3s'; setTimeout(() => t.remove(), 300); }, 2000);
-}
+      // --- Toast ---
+      function showToast(message) {
+        const t = document.createElement("div");
+        t.className =
+          "fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-5 py-3 rounded-full shadow-xl z-50 text-sm font-medium flex items-center gap-2";
+        t.textContent = message;
+        document.body.appendChild(t);
+        setTimeout(() => {
+          t.style.opacity = "0";
+          t.style.transition = "opacity .3s";
+          setTimeout(() => t.remove(), 300);
+        }, 2000);
+      }
 
-// --- Banner Slider ---
-async function loadBanner() {
-  const docSnap = await getDoc(doc(db, "settings", "banners"));
-  const banners = docSnap.exists() ? docSnap.data().list || [] : [];
-  const slider = document.getElementById('bannerSlider');
+      // --- Banner Slider ---
+      async function loadBanner() {
+        const docSnap = await getDoc(doc(db, "settings", "banners"));
+        const banners = docSnap.exists() ? docSnap.data().list || [] : [];
+        const slider = document.getElementById("bannerSlider");
 
-  if (!banners.length) {
-    slider.innerHTML = `
+        if (!banners.length) {
+          slider.innerHTML = `
       <div class="min-w-full h-full flex-shrink-0 relative bg-gradient-to-br from-[#C2185B] via-[#AD1457] to-[#880E4F] flex items-center">
         <div class="max-w-7xl mx-auto px-6 sm:px-10 text-white">
           <p class="text-xs font-semibold tracking-widest uppercase opacity-80 mb-2">New Season</p>
@@ -679,44 +1360,68 @@ async function loadBanner() {
           <a href="#products-section" class="bg-white text-[#C2185B] px-7 py-3 rounded-full font-semibold hover:bg-pink-50 transition inline-block text-sm shadow-md">Shop Now →</a>
         </div>
       </div>`;
-    document.getElementById('prevSlide').classList.add('hidden');
-    document.getElementById('nextSlide').classList.add('hidden');
-    return;
-  }
+          document.getElementById("prevSlide").classList.add("hidden");
+          document.getElementById("nextSlide").classList.add("hidden");
+          return;
+        }
 
-  slider.innerHTML = banners.map(b => `
+        slider.innerHTML = banners
+          .map(
+            (b) => `
     <div class="min-w-full h-full flex-shrink-0 relative">
       <img src="${b.url}" class="w-full h-full object-cover">
       <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/30 to-transparent flex items-center">
         <div class="max-w-7xl mx-auto px-6 sm:px-10 text-white">
-          ${b.title ? `<h1 class="text-2xl sm:text-5xl font-bold leading-tight mb-3 sm:mb-4 serif drop-shadow-lg">${b.title}</h1>` : ''}
-          ${b.subtitle ? `<p class="text-sm sm:text-lg opacity-90 mb-5 sm:mb-6 drop-shadow">${b.subtitle}</p>` : ''}
-          <a href="#products-section" class="bg-[#C2185B] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-[#AD1457] transition inline-block text-sm shadow-lg">${b.btnText || 'Shop Now →'}</a>
+          ${b.title ? `<h1 class="text-2xl sm:text-5xl font-bold leading-tight mb-3 sm:mb-4 serif drop-shadow-lg">${b.title}</h1>` : ""}
+          ${b.subtitle ? `<p class="text-sm sm:text-lg opacity-90 mb-5 sm:mb-6 drop-shadow">${b.subtitle}</p>` : ""}
+          <a href="#products-section" class="bg-[#C2185B] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-[#AD1457] transition inline-block text-sm shadow-lg">${b.btnText || "Shop Now →"}</a>
         </div>
       </div>
-    </div>`).join('');
+    </div>`,
+          )
+          .join("");
 
-  // Dots
-  document.getElementById('bannerDots').innerHTML = banners.map((_, i) =>
-    `<button class="w-2 h-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-white w-6' : 'bg-white/50'}" onclick="goToSlide(${i})"></button>`
-  ).join('');
+        // Dots
+        document.getElementById("bannerDots").innerHTML = banners
+          .map(
+            (_, i) =>
+              `<button class="w-2 h-2 rounded-full transition-all duration-300 ${i === 0 ? "bg-white w-6" : "bg-white/50"}" onclick="goToSlide(${i})"></button>`,
+          )
+          .join("");
 
-  let cur = 0;
-  let timer = setInterval(() => goToSlide((cur + 1) % banners.length), 4500);
+        let cur = 0;
+        let timer = setInterval(
+          () => goToSlide((cur + 1) % banners.length),
+          4500,
+        );
 
-  window.goToSlide = (i) => {
-    cur = i;
-    slider.style.transform = `translateX(-${i * 100}%)`;
-    document.querySelectorAll('#bannerDots button').forEach((d, j) => {
-      d.className = `h-2 rounded-full transition-all duration-300 ${j === i ? 'bg-white w-6' : 'bg-white/50 w-2'}`;
-    });
-  };
-  document.getElementById('prevSlide').onclick = () => { clearInterval(timer); goToSlide((cur - 1 + banners.length) % banners.length); timer = setInterval(() => goToSlide((cur + 1) % banners.length), 4500); };
-  document.getElementById('nextSlide').onclick = () => { clearInterval(timer); goToSlide((cur + 1) % banners.length); timer = setInterval(() => goToSlide((cur + 1) % banners.length), 4500); };
-}
+        window.goToSlide = (i) => {
+          cur = i;
+          slider.style.transform = `translateX(-${i * 100}%)`;
+          document.querySelectorAll("#bannerDots button").forEach((d, j) => {
+            d.className = `h-2 rounded-full transition-all duration-300 ${j === i ? "bg-white w-6" : "bg-white/50 w-2"}`;
+          });
+        };
+        document.getElementById("prevSlide").onclick = () => {
+          clearInterval(timer);
+          goToSlide((cur - 1 + banners.length) % banners.length);
+          timer = setInterval(
+            () => goToSlide((cur + 1) % banners.length),
+            4500,
+          );
+        };
+        document.getElementById("nextSlide").onclick = () => {
+          clearInterval(timer);
+          goToSlide((cur + 1) % banners.length);
+          timer = setInterval(
+            () => goToSlide((cur + 1) % banners.length),
+            4500,
+          );
+        };
+      }
 
-loadProducts();
-loadBanner();
-</script>
-</body>
+      loadProducts();
+      loadBanner();
+    </script>
+  </body>
 </html>
