@@ -8,36 +8,45 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>body{font-family:'Poppins',sans-serif}</style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-[#FFF5F8]">
 
-  <!-- Login Screen -->
   <div id="loginScreen" class="min-h-screen flex items-center justify-center px-4">
-    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-      <h2 class="text-2xl font-bold mb-6 text-center text-pink-600">Aneeba Admin Login</h2>
-      <input type="email" id="email" placeholder="Email" class="border w-full p-3 mb-3 rounded focus:outline-none focus:border-pink-600">
-      <input type="password" id="password" placeholder="Password" class="border w-full p-3 mb-4 rounded focus:outline-none focus:border-pink-600">
-      <button id="loginBtn" class="bg-pink-600 text-white w-full py-3 rounded hover:bg-pink-700 font-semibold">Login</button>
-      <p id="errorMsg" class="text-red-500 text-sm mt-3 hidden">Wrong email or password!</p>
+    <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+      <div class="text-center mb-6">
+        <img src="/logo.png" alt="Logo" class="h-20 mx-auto mb-3 object-contain">
+        <h2 class="text-2xl font-bold text-[#C2185B]">Admin Login</h2>
+      </div>
+      <input type="email" id="email" placeholder="Email" class="border w-full p-3 mb-3 rounded-lg focus:outline-none focus:border-[#C2185B]">
+      <input type="password" id="password" placeholder="Password" class="border w-full p-3 mb-4 rounded-lg focus:outline-none focus:border-[#C2185B]">
+      <button id="loginBtn" class="bg-[#C2185B] text-white w-full py-3 rounded-lg hover:bg-[#AD1457] font-semibold transition">Login</button>
+      <p id="errorMsg" class="text-red-500 text-sm mt-3 hidden text-center">Wrong email or password!</p>
     </div>
   </div>
 
-  <!-- Admin Panel -->
   <div id="adminPanel" class="hidden p-4 md:p-6">
-    <div class="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow">
-      
-      <div class="flex justify-between items-center mb-6 border-b pb-4">
-        <h2 class="text-2xl font-bold">Admin Dashboard</h2>
-        <button id="logoutBtn" class="text-red-600 hover:underline font-medium">Logout</button>
+    <div class="max-w-5xl mx-auto">
+
+      <div class="bg-white p-5 rounded-2xl shadow mb-6 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <img src="/logo.png" class="h-12 object-contain">
+          <h2 class="text-xl font-bold text-[#C2185B]">Admin Dashboard</h2>
+        </div>
+        <button id="logoutBtn" class="text-red-500 hover:underline font-medium text-sm">Logout</button>
       </div>
 
-      <!-- Add Product -->
-      <div class="border-b pb-6 mb-6">
-        <h3 class="text-xl font-bold mb-4">Add Product</h3>
-        <form id="productForm">
-          <input name="name" placeholder="Product Name" class="border w-full p-2 mb-2 rounded" required>
-          <input name="price" type="number" placeholder="Price" class="border w-full p-2 mb-2 rounded" required>
+      <div class="bg-white p-6 rounded-2xl shadow mb-6">
+        <h3 class="text-lg font-bold mb-4 text-[#C2185B]">Add New Product</h3>
+        <form id="productForm" class="space-y-3">
+          <input name="name" placeholder="Product Name" class="border w-full p-3 rounded-lg focus:outline-none focus:border-[#C2185B]" required>
 
-          <select name="category" class="border w-full p-2 mb-2 rounded" required>
+          <div class="grid grid-cols-2 gap-3">
+            <input name="price" type="number" placeholder="Price (Rs)" class="border w-full p-3 rounded-lg focus:outline-none focus:border-[#C2185B]" required>
+            <input name="discount" type="number" min="0" max="100" placeholder="Discount % (optional)" class="border w-full p-3 rounded-lg focus:outline-none focus:border-[#C2185B]">
+          </div>
+
+          <textarea name="description" placeholder="Product Description (optional)" rows="3" class="border w-full p-3 rounded-lg focus:outline-none focus:border-[#C2185B] resize-none"></textarea>
+
+          <select name="category" class="border w-full p-3 rounded-lg focus:outline-none focus:border-[#C2185B]" required>
             <option value="">Select Category</option>
             <optgroup label="Dresses">
               <option value="Ready To Wear">Ready To Wear</option>
@@ -59,33 +68,32 @@
             </optgroup>
           </select>
 
-          <div class="mb-3">
-            <label class="block text-sm font-medium mb-1">Product Images</label>
-            <input type="file" id="productImages" name="images" multiple accept="image/*" class="border w-full p-2 rounded" required>
+          <div>
+            <label class="block text-sm font-medium mb-1 text-gray-600">Product Images</label>
+            <input type="file" id="productImages" name="images" multiple accept="image/*" class="border w-full p-2 rounded-lg" required>
             <div id="imagePreview" class="grid grid-cols-4 gap-2 mt-2"></div>
           </div>
 
-          <button class="bg-green-600 text-white px-4 py-2 rounded w-full hover:bg-green-700 font-semibold">Add Product</button>
+          <button class="bg-[#C2185B] text-white px-6 py-3 rounded-lg w-full hover:bg-[#AD1457] font-semibold transition">Add Product</button>
         </form>
       </div>
 
-      <!-- Banner Management -->
-      <div class="border-b pb-6 mb-6">
-        <h3 class="text-xl font-bold mb-4">Manage Hero Banners</h3>
-        <div class="bg-gray-50 p-4 rounded-lg mb-4">
+      <div class="bg-white p-6 rounded-2xl shadow mb-6">
+        <h3 class="text-lg font-bold mb-4 text-[#C2185B]">Manage Hero Banners</h3>
+        <div class="bg-[#FFF5F8] p-4 rounded-xl mb-4">
           <input type="file" id="bannerInput" accept="image/*" multiple class="mb-3 w-full">
-          <button id="uploadBannerBtn" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 font-semibold">
+          <button id="uploadBannerBtn" class="bg-[#C2185B] text-white px-4 py-2 rounded-lg hover:bg-[#AD1457] font-semibold transition">
             Upload Banners
           </button>
         </div>
         <div id="bannerList" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
       </div>
 
-      <!-- Products List -->
-      <div>
-        <h3 class="text-xl font-bold mb-3">All Products</h3>
+      <div class="bg-white p-6 rounded-2xl shadow">
+        <h3 class="text-lg font-bold mb-4 text-[#C2185B]">All Products</h3>
         <div id="productList" class="space-y-3"></div>
       </div>
+
     </div>
   </div>
 
@@ -109,17 +117,16 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// Auth Logic
 document.getElementById('loginBtn').onclick = async () => {
   try {
-    await signInWithEmailAndPassword(auth, 
-      document.getElementById('email').value, 
+    await signInWithEmailAndPassword(auth,
+      document.getElementById('email').value,
       document.getElementById('password').value
     );
   } catch {
     document.getElementById('errorMsg').classList.remove('hidden');
   }
-}
+};
 
 document.getElementById('logoutBtn').onclick = () => signOut(auth);
 
@@ -135,10 +142,9 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-// Image Preview
 const imageInput = document.querySelector('input[name="images"]');
 const imagePreview = document.getElementById('imagePreview');
-if(imageInput){
+if (imageInput) {
   imageInput.onchange = () => {
     imagePreview.innerHTML = '';
     Array.from(imageInput.files).forEach(file => {
@@ -151,29 +157,38 @@ if(imageInput){
   };
 }
 
-// Load Products
 async function loadProducts() {
   const q = query(collection(db, "products"), orderBy("createdAt", "desc"));
   const querySnapshot = await getDocs(q);
-  const products = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  const products = querySnapshot.docs.map(d => ({ id: d.id, ...d.data() }));
 
-  document.getElementById('productList').innerHTML = products.length === 0 
+  document.getElementById('productList').innerHTML = products.length === 0
     ? `<p class="text-gray-500">No products yet</p>`
-    : products.map(p => `
-      <div class="border p-3 rounded flex justify-between items-center">
-        <div class="flex gap-3">
-          ${p.images && p.images[0] ? `<img src="${p.images[0]}" class="w-16 h-16 object-cover rounded">` : ''}
-          <div>
-            <p class="font-semibold">${p.name}</p>
-            <p class="text-sm text-gray-600">Rs. ${p.price} - ${p.category}</p>
-          </div>
-        </div>
-        <button onclick="deleteProduct('${p.id}')" class="text-red-600 text-sm hover:underline">Delete</button>
-      </div>
-    `).join('');
+    : products.map(p => {
+        const discountedPrice = p.discount ? Math.round(p.price - (p.price * p.discount / 100)) : null;
+        return `
+          <div class="border rounded-xl p-3 flex justify-between items-center gap-3">
+            <div class="flex gap-3 items-center">
+              ${p.images && p.images[0] ? `<img src="${p.images[0]}" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">` : ''}
+              <div>
+                <p class="font-semibold">${p.name}</p>
+                <p class="text-xs text-gray-500">${p.category}</p>
+                ${p.description ? `<p class="text-xs text-gray-400 mt-0.5 line-clamp-1">${p.description}</p>` : ''}
+                <div class="flex gap-2 items-center mt-1">
+                  ${discountedPrice
+                    ? `<span class="text-[#C2185B] font-bold text-sm">Rs ${discountedPrice}</span>
+                       <span class="text-gray-400 line-through text-xs">Rs ${p.price}</span>
+                       <span class="bg-green-100 text-green-700 text-xs px-1.5 py-0.5 rounded">${p.discount}% OFF</span>`
+                    : `<span class="text-[#C2185B] font-bold text-sm">Rs ${p.price}</span>`
+                  }
+                </div>
+              </div>
+            </div>
+            <button onclick="deleteProduct('${p.id}')" class="text-red-500 text-sm hover:underline flex-shrink-0">Delete</button>
+          </div>`;
+      }).join('');
 }
 
-// Add Product
 document.getElementById("productForm").onsubmit = async (e) => {
   e.preventDefault();
   const form = e.target;
@@ -191,7 +206,9 @@ document.getElementById("productForm").onsubmit = async (e) => {
 
     await addDoc(collection(db, "products"), {
       name: form.name.value,
-      price: form.price.value,
+      price: Number(form.price.value),
+      discount: form.discount.value ? Number(form.discount.value) : 0,
+      description: form.description.value.trim(),
       category: form.category.value,
       images: imageUrls,
       createdAt: serverTimestamp()
@@ -210,13 +227,12 @@ document.getElementById("productForm").onsubmit = async (e) => {
 };
 
 window.deleteProduct = async (id) => {
-  if(confirm("Delete this product?")){
+  if (confirm("Delete this product?")) {
     await deleteDoc(doc(db, "products", id));
     loadProducts();
   }
 };
 
-// Banner Management
 const bannerInput = document.getElementById('bannerInput');
 const uploadBannerBtn = document.getElementById('uploadBannerBtn');
 const bannerList = document.getElementById('bannerList');
@@ -226,16 +242,15 @@ async function loadBanners() {
   const banners = docSnap.exists() ? docSnap.data().list || [] : [];
 
   bannerList.innerHTML = banners.length === 0
-   ? `<p class="text-gray-500 col-span-3">No banners uploaded yet</p>`
-    : banners.map((banner, index) => `
-      <div class="relative group">
-        <img src="${banner.url}" class="w-full h-32 object-cover rounded-lg">
-        <button onclick="deleteBanner('${banner.id}')"
-          class="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition">
-          Delete
-        </button>
-      </div>
-    `).join("");
+    ? `<p class="text-gray-500 col-span-3">No banners uploaded yet</p>`
+    : banners.map(banner => `
+        <div class="relative group">
+          <img src="${banner.url}" class="w-full h-32 object-cover rounded-xl">
+          <button onclick="deleteBanner('${banner.id}')"
+            class="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition">
+            Delete
+          </button>
+        </div>`).join("");
 }
 
 uploadBannerBtn.onclick = async () => {
