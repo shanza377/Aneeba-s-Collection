@@ -155,6 +155,75 @@
     <button class="absolute top-4 right-4 text-white text-3xl leading-none hover:text-gray-300">✕</button>
   </div>
 
+  <!-- Order Form Modal -->
+  <div id="orderModal" class="hidden fixed inset-0 bg-black/60 z-[60] flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white rounded-t-3xl sm:rounded-2xl shadow-2xl w-full sm:max-w-md max-h-[92vh] overflow-y-auto">
+      <div class="flex justify-between items-center p-5 border-b border-pink-50 sticky top-0 bg-white z-10 rounded-t-3xl sm:rounded-t-2xl">
+        <div>
+          <h3 class="text-lg font-bold text-gray-800 serif">Place Your Order</h3>
+          <p class="text-xs text-gray-400">Fill in your delivery details</p>
+        </div>
+        <button id="closeOrderModal" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#FFF0F5] text-gray-500 hover:text-[#C2185B] transition text-lg">✕</button>
+      </div>
+      <div id="orderSummary" class="px-5 py-3 bg-[#FFF5F8] border-b border-pink-100 space-y-2"></div>
+      <form id="orderForm" class="p-5 space-y-4">
+        <div>
+          <label class="text-xs font-semibold text-gray-600 mb-1 block">Full Name *</label>
+          <input id="o-name" type="text" placeholder="Enter your full name" required
+            class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B]">
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-gray-600 mb-1 block">Phone Number *</label>
+          <input id="o-phone" type="tel" placeholder="e.g. 0321 1234567" required
+            class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B]">
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-gray-600 mb-1 block">Complete Address *</label>
+          <textarea id="o-address" rows="2" placeholder="House/Flat No., Street, Area..." required
+            class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B] resize-none"></textarea>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs font-semibold text-gray-600 mb-1 block">City *</label>
+            <input id="o-city" type="text" placeholder="e.g. Karachi" required
+              class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B]">
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-gray-600 mb-1 block">Postal Code</label>
+            <input id="o-zip" type="text" placeholder="e.g. 75600"
+              class="border w-full p-3 rounded-xl text-sm focus:outline-none focus:border-[#C2185B]">
+          </div>
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-gray-600 mb-2 block">Payment Method *</label>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="flex items-center gap-2 border rounded-xl p-3 cursor-pointer hover:border-[#C2185B] transition">
+              <input type="radio" name="o-payment" value="EasyPaisa" class="accent-[#C2185B]" required>
+              <span class="text-sm font-medium text-gray-700">💚 EasyPaisa</span>
+            </label>
+            <label class="flex items-center gap-2 border rounded-xl p-3 cursor-pointer hover:border-[#C2185B] transition">
+              <input type="radio" name="o-payment" value="JazzCash" class="accent-[#C2185B]">
+              <span class="text-sm font-medium text-gray-700">🔴 JazzCash</span>
+            </label>
+            <label class="flex items-center gap-2 border rounded-xl p-3 cursor-pointer hover:border-[#C2185B] transition">
+              <input type="radio" name="o-payment" value="Bank Transfer" class="accent-[#C2185B]">
+              <span class="text-sm font-medium text-gray-700">🏦 Bank Transfer</span>
+            </label>
+            <label class="flex items-center gap-2 border rounded-xl p-3 cursor-pointer hover:border-[#C2185B] transition">
+              <input type="radio" name="o-payment" value="Cash on Delivery" class="accent-[#C2185B]">
+              <span class="text-sm font-medium text-gray-700">💵 Cash on Delivery</span>
+            </label>
+          </div>
+        </div>
+        <button type="submit" id="placeOrderBtn"
+          class="bg-[#C2185B] text-white w-full py-3.5 rounded-xl font-semibold hover:bg-[#AD1457] transition flex items-center justify-center gap-2 text-sm shadow-md">
+          <svg class="w-5 h-5 fill-white" viewBox="0 0 32 32"><path d="M16.001 2.667c-7.373 0-13.334 5.961-13.334 13.333 0 2.352.614 4.646 1.781 6.667l-1.875 6.854 7.021-1.84c1.979 1.083 4.213 1.652 6.407 1.652 7.373 0 13.333-5.961 13.333-13.333s-5.96-13.333-13.333-13.333zm0 24c-1.994 0-3.946-.521-5.667-1.507l-.406-.233-4.166 1.093 1.114-4.062-.264-.417c-1.081-1.71-1.652-3.678-1.652-5.707 0-5.894 4.773-10.667 10.667-10.667s10.667 4.773 10.667 10.667-4.773 10.667-10.667 10.667zm5.84-7.973c-.32-.16-1.893-.933-2.187-.96-.293-.053-.507-.08-.72.08s-.827.96-1.013 1.157c-.187.213-.373.24-.693.08-.32-.16-1.347-.493-2.56-1.573-.947-.84-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.144-.16.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.373-.26-.62-.533-.533-.72-.547l-.613-.013c-.213 0-.56.08-.853.4s-1.12 1.093-1.12 2.667 1.147 3.093 1.307 3.307c.16.213 2.253 3.44 5.467 4.827.763.333 1.36.533 1.827.693.773.24 1.467.213 2.02.133.613-.08 1.893-.773 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"/></svg>
+          Confirm & Send to WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- Cart Sidebar -->
   <div id="cartSidebar" class="hidden fixed top-0 right-0 w-full sm:w-[380px] h-full bg-white shadow-2xl z-50">
     <div class="flex justify-between items-center p-5 border-b border-pink-50">
@@ -186,7 +255,7 @@
 
 <script type="module">
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getFirestore, collection, doc, getDoc, addDoc, serverTimestamp } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -303,12 +372,8 @@ function renderProduct(p) {
     showToast(`${p.name} added to cart! 🛍️`);
   };
 
-  // Buy Now (direct WhatsApp)
-  document.getElementById('buyNowBtn').onclick = () => {
-    const price = discPrice(p) ?? p.price;
-    const msg = `🛍️ *Order – Aneeba's Collection*\n\nProduct: *${p.name}*\nCategory: ${p.category}\nPrice: Rs ${price}\n\nPlease confirm my order.\n\nName: \nAddress: \nPhone: `;
-    window.open(`https://wa.me/923226135815?text=${encodeURIComponent(msg)}`);
-  };
+  // Buy Now — open order form
+  document.getElementById('buyNowBtn').onclick = () => showOrderModal([p]);
 }
 
 window.switchImage = (src, el) => {
@@ -374,14 +439,80 @@ document.getElementById('cartOverlay').onclick = closeCart;
 
 document.getElementById('orderBtn').onclick = () => {
   if (!cart.length) return;
-  let msg = "🛍️ *New Order – Aneeba's Collection*\n\n";
-  cart.forEach((item, i) => {
-    const price = discPrice(item) ?? item.price;
-    msg += `${i + 1}. *${item.name}*\n   Category: ${item.category}\n   Price: Rs ${price}\n\n`;
+  closeCart();
+  showOrderModal(cart);
+};
+
+// --- Order Modal ---
+const orderModal = document.getElementById('orderModal');
+document.getElementById('closeOrderModal').onclick = () => orderModal.classList.add('hidden');
+orderModal.onclick = (e) => { if (e.target === orderModal) orderModal.classList.add('hidden'); };
+
+function showOrderModal(items) {
+  const total = items.reduce((s, item) => s + (discPrice(item) ?? item.price), 0);
+  document.getElementById('orderSummary').innerHTML = `
+    <div class="flex justify-between items-center mb-1">
+      <span class="text-xs font-semibold text-gray-600">${items.length} item${items.length !== 1 ? 's' : ''}</span>
+      <span class="text-[#C2185B] font-bold text-sm">Total: Rs ${total}</span>
+    </div>
+    ${items.map(item => `
+      <div class="flex items-center gap-2">
+        <img src="${item.images[0]}" class="w-10 h-10 object-cover rounded-lg flex-shrink-0">
+        <div class="flex-1 min-w-0">
+          <p class="text-xs font-semibold text-gray-700 truncate">${item.name}</p>
+          <p class="text-xs text-gray-400">Rs ${discPrice(item) ?? item.price}</p>
+        </div>
+      </div>`).join('')}`;
+  orderModal.dataset.items = JSON.stringify(items);
+  orderModal.classList.remove('hidden');
+  document.getElementById('o-name').focus();
+}
+
+document.getElementById('orderForm').onsubmit = async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('placeOrderBtn');
+  const items = JSON.parse(orderModal.dataset.items || '[]');
+  const payment = document.querySelector('input[name="o-payment"]:checked')?.value;
+  if (!payment) { alert('Please select a payment method'); return; }
+
+  const name    = document.getElementById('o-name').value.trim();
+  const phone   = document.getElementById('o-phone').value.trim();
+  const address = document.getElementById('o-address').value.trim();
+  const city    = document.getElementById('o-city').value.trim();
+  const zip     = document.getElementById('o-zip').value.trim();
+  const total   = items.reduce((s, item) => s + (discPrice(item) ?? item.price), 0);
+
+  btn.disabled = true;
+  btn.textContent = 'Saving order...';
+
+  try {
+    await addDoc(collection(db, "orders"), {
+      customerName: name, phone, address, city, zipCode: zip,
+      paymentMethod: payment,
+      items: items.map(item => ({
+        id: item.id, name: item.name, category: item.category,
+        price: discPrice(item) ?? item.price, image: item.images[0]
+      })),
+      total, status: 'new', createdAt: serverTimestamp()
+    });
+  } catch (err) { console.error('Order save error:', err); }
+
+  let msg = `🛍️ *New Order – Aneeba's Collection*\n\n`;
+  msg += `👤 *Name:* ${name}\n📱 *Phone:* ${phone}\n`;
+  msg += `🏠 *Address:* ${address}, ${city}${zip ? ', ' + zip : ''}\n`;
+  msg += `💳 *Payment:* ${payment}\n\n*Items:*\n`;
+  items.forEach((item, i) => {
+    msg += `${i + 1}. ${item.name} – Rs ${discPrice(item) ?? item.price}\n`;
   });
-  const total = cart.reduce((s, item) => s + (discPrice(item) ?? item.price), 0);
-  msg += `*Total: Rs ${total}*\n\nPlease confirm my order.\n\nName: \nAddress: \nPhone: `;
+  msg += `\n*Total: Rs ${total}*`;
+
+  orderModal.classList.add('hidden');
+  cart = []; updateCartUI();
+  document.getElementById('orderForm').reset();
+  btn.disabled = false;
+  btn.textContent = 'Confirm & Send to WhatsApp';
   window.open(`https://wa.me/923226135815?text=${encodeURIComponent(msg)}`);
+  showToast('Order placed! Opening WhatsApp 🎉');
 };
 
 function showToast(message) {
