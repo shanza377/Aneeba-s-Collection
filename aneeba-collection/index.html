@@ -496,7 +496,7 @@ function updateCartUI() {
       </div>`;
   }).join('');
 
-  const total = cart.reduce((s, item) => s + (discPrice(item) ?? item.price), 0);
+  const total = cart.reduce((s, item) => s + Number(discPrice(item) ?? item.price), 0);
   document.getElementById('cartTotal').textContent = total;
 }
 
