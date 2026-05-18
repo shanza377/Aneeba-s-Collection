@@ -24,7 +24,7 @@
 <body>
 
   <div class="bg-[#C2185B] text-white text-center py-2 text-xs font-medium tracking-wide px-4">
-    🚚 Free Delivery All over Pakistan &nbsp;|&nbsp; ✨ New Arrivals Every Week
+    🚚 Delivery Available All over Pakistan &nbsp;|&nbsp; ✨ New Arrivals Every Week
   </div>
 
   <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-pink-50">
@@ -166,23 +166,31 @@ function productCard(p) {
   const dp = discPrice(p);
   return `
     <div class="bg-white rounded-2xl shadow-sm overflow-hidden card-hover fade-in border border-pink-50/60">
-      <div class="relative overflow-hidden">
+      <a href="product.html?id=${p.id}" class="block relative overflow-hidden">
         <img src="${p.images[0]}" loading="lazy" class="w-full h-48 sm:h-56 object-cover hover:scale-105 transition duration-500">
         ${isNew(p) ? `<span class="absolute top-2 left-2 bg-[#C2185B] text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">NEW</span>` : ''}
         ${p.discount ? `<span class="absolute top-2 right-2 bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">${p.discount}% OFF</span>` : ''}
         ${p.images.length > 1 ? `<span class="absolute bottom-2 right-2 bg-black/50 text-white text-[10px] px-1.5 py-0.5 rounded-full">+${p.images.length - 1}</span>` : ''}
-      </div>
+      </a>
       <div class="p-3 sm:p-4">
-        <h3 class="font-semibold text-sm text-gray-800 line-clamp-1 mb-0.5">${p.name}</h3>
+        <a href="product.html?id=${p.id}">
+          <h3 class="font-semibold text-sm text-gray-800 line-clamp-1 mb-0.5 hover:text-[#C2185B] transition">${p.name}</h3>
+        </a>
         ${p.description ? `<p class="text-[11px] text-gray-400 line-clamp-2 mb-2">${p.description}</p>` : ''}
         <div class="flex items-center gap-2 mb-3">
           <span class="text-[#C2185B] font-bold text-base">Rs ${dp ?? p.price}</span>
           ${dp ? `<span class="text-gray-300 line-through text-xs">Rs ${p.price}</span>` : ''}
         </div>
-        <button onclick='addToCart(${JSON.stringify(p).replace(/'/g,"&apos;")})'
-          class="bg-[#C2185B] text-white w-full py-2 rounded-xl hover:bg-[#AD1457] text-xs sm:text-sm font-semibold transition">
-          Add to Cart
-        </button>
+        <div class="flex gap-2">
+          <a href="product.html?id=${p.id}"
+            class="flex-1 border border-[#C2185B] text-[#C2185B] py-2 rounded-xl hover:bg-[#FFF0F5] text-xs sm:text-sm font-semibold transition text-center">
+            View
+          </a>
+          <button onclick='addToCart(${JSON.stringify(p).replace(/'/g,"&apos;")})'
+            class="flex-1 bg-[#C2185B] text-white py-2 rounded-xl hover:bg-[#AD1457] text-xs sm:text-sm font-semibold transition">
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>`;
 }
