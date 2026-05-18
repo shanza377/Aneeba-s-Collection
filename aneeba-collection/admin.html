@@ -85,13 +85,17 @@
 
       <div class="bg-white p-6 rounded-2xl shadow mb-6">
         <h3 class="text-lg font-bold mb-4 text-[#C2185B]">Manage Hero Banners</h3>
-        <div class="bg-[#FFF5F8] p-4 rounded-xl mb-4">
-          <input type="file" id="bannerInput" accept="image/*" multiple class="mb-3 w-full">
-          <button id="uploadBannerBtn" class="bg-[#C2185B] text-white px-4 py-2 rounded-lg hover:bg-[#AD1457] font-semibold transition">
+        <div class="bg-[#FFF5F8] p-4 rounded-xl mb-4 space-y-3">
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-1">Select Banner Image(s)</label>
+            <input type="file" id="bannerInput" accept="image/*" multiple class="w-full border p-2 rounded-lg bg-white">
+          </div>
+          <div id="bannerTextFields" class="space-y-3"></div>
+          <button id="uploadBannerBtn" class="bg-[#C2185B] text-white px-4 py-2 rounded-lg hover:bg-[#AD1457] font-semibold transition w-full">
             Upload Banners
           </button>
         </div>
-        <div id="bannerList" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+        <div id="bannerList" class="space-y-3"></div>
       </div>
 
       <div class="bg-white p-6 rounded-2xl shadow">
@@ -241,20 +245,45 @@ window.deleteProduct = async (id) => {
 const bannerInput = document.getElementById('bannerInput');
 const uploadBannerBtn = document.getElementById('uploadBannerBtn');
 const bannerList = document.getElementById('bannerList');
+const bannerTextFields = document.getElementById('bannerTextFields');
+
+bannerInput.onchange = () => {
+  const files = Array.from(bannerInput.files);
+  if (!files.length) { bannerTextFields.innerHTML = ''; return; }
+
+  bannerTextFields.innerHTML = files.map((file, i) => `
+    <div class="border rounded-xl p-3 bg-white space-y-2">
+      <p class="text-xs font-semibold text-gray-500">Banner ${i + 1}: ${file.name}</p>
+      <input type="text" id="banner-title-${i}" placeholder="Title (e.g. BIG SALE UPTO 50%)"
+        class="border w-full p-2 rounded-lg text-sm focus:outline-none focus:border-[#C2185B]">
+      <input type="text" id="banner-subtitle-${i}" placeholder="Subtitle (e.g. Discover the latest fashion & beauty trends)"
+        class="border w-full p-2 rounded-lg text-sm focus:outline-none focus:border-[#C2185B]">
+      <input type="text" id="banner-btntext-${i}" placeholder='Button text (e.g. Shop Now →)'
+        class="border w-full p-2 rounded-lg text-sm focus:outline-none focus:border-[#C2185B]">
+    </div>`).join('');
+};
 
 async function loadBanners() {
   const docSnap = await getDoc(doc(db, "settings", "banners"));
   const banners = docSnap.exists() ? docSnap.data().list || [] : [];
 
   bannerList.innerHTML = banners.length === 0
-    ? `<p class="text-gray-500 col-span-3">No banners uploaded yet</p>`
+    ? `<p class="text-gray-400 text-sm">No banners uploaded yet</p>`
     : banners.map(banner => `
-        <div class="relative group">
-          <img src="${banner.url}" class="w-full h-32 object-cover rounded-xl">
-          <button onclick="deleteBanner('${banner.id}')"
-            class="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition">
-            Delete
-          </button>
+        <div class="border rounded-xl overflow-hidden">
+          <div class="relative group">
+            <img src="${banner.url}" class="w-full h-36 object-cover">
+            <button onclick="deleteBanner('${banner.id}')"
+              class="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition">
+              Delete
+            </button>
+          </div>
+          <div class="p-3 bg-[#FFF5F8] space-y-1">
+            <p class="font-semibold text-sm text-gray-800">${banner.title || '(No title set)'}</p>
+            <p class="text-xs text-gray-500">${banner.subtitle || '(No subtitle set)'}</p>
+            ${banner.btnText ? `<p class="text-xs text-[#C2185B]">Button: ${banner.btnText}</p>` : ''}
+            <button onclick="editBannerText('${banner.id}')" class="text-xs text-[#C2185B] hover:underline mt-1">Edit Text</button>
+          </div>
         </div>`).join("");
 }
 
@@ -269,14 +298,21 @@ uploadBannerBtn.onclick = async () => {
     const docSnap = await getDoc(doc(db, "settings", "banners"));
     const existing = docSnap.exists() ? docSnap.data().list || [] : [];
 
-    const newBanners = await Promise.all(Array.from(files).map(async (file) => {
+    const newBanners = await Promise.all(Array.from(files).map(async (file, i) => {
       const storageRef = ref(storage, `banners/${Date.now()}_${file.name}`);
       const snapshot = await uploadBytes(storageRef, file);
-      return { id: Date.now() + Math.random(), url: await getDownloadURL(snapshot.ref) };
+      return {
+        id: Date.now() + Math.random(),
+        url: await getDownloadURL(snapshot.ref),
+        title: document.getElementById(`banner-title-${i}`)?.value.trim() || '',
+        subtitle: document.getElementById(`banner-subtitle-${i}`)?.value.trim() || '',
+        btnText: document.getElementById(`banner-btntext-${i}`)?.value.trim() || 'Shop Now →'
+      };
     }));
 
     await setDoc(doc(db, "settings", "banners"), { list: [...existing, ...newBanners] });
     bannerInput.value = '';
+    bannerTextFields.innerHTML = '';
     loadBanners();
     alert(`${newBanners.length} banner(s) uploaded!`);
   } catch (error) {
@@ -285,6 +321,24 @@ uploadBannerBtn.onclick = async () => {
     uploadBannerBtn.disabled = false;
     uploadBannerBtn.textContent = "Upload Banners";
   }
+};
+
+window.editBannerText = async (id) => {
+  const docSnap = await getDoc(doc(db, "settings", "banners"));
+  const banners = docSnap.data().list || [];
+  const banner = banners.find(b => b.id == id);
+  if (!banner) return;
+
+  const title = prompt("Banner Title:", banner.title || '');
+  if (title === null) return;
+  const subtitle = prompt("Banner Subtitle:", banner.subtitle || '');
+  if (subtitle === null) return;
+  const btnText = prompt("Button Text:", banner.btnText || 'Shop Now →');
+  if (btnText === null) return;
+
+  const updated = banners.map(b => b.id == id ? { ...b, title: title.trim(), subtitle: subtitle.trim(), btnText: btnText.trim() } : b);
+  await setDoc(doc(db, "settings", "banners"), { list: updated });
+  loadBanners();
 };
 
 window.deleteBanner = async (id) => {
