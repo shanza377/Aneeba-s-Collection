@@ -1001,7 +1001,7 @@
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
 
-      let cart = [];
+      let cart = JSON.parse(localStorage.getItem('ac_cart') || '[]');
       let allProducts = [];
       const NOW = Date.now();
       const SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000;
@@ -1177,6 +1177,7 @@
       };
 
       function updateCartUI() {
+        localStorage.setItem('ac_cart', JSON.stringify(cart));
         const count = cart.length;
         document.getElementById("cartCount").textContent = count;
         document.getElementById("cartSubtitle").textContent =
@@ -1420,6 +1421,7 @@
         };
       }
 
+      updateCartUI();
       loadProducts();
       loadBanner();
     </script>

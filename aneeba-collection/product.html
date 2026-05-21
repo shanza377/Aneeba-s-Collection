@@ -271,7 +271,7 @@ const db = getFirestore(app);
 const params = new URLSearchParams(window.location.search);
 const productId = params.get('id');
 
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('ac_cart') || '[]');
 let currentProduct = null;
 
 const NOW = Date.now();
@@ -397,6 +397,7 @@ function addToCart(product) {
 window.removeFromCart = (i) => { cart.splice(i, 1); updateCartUI(); };
 
 function updateCartUI() {
+  localStorage.setItem('ac_cart', JSON.stringify(cart));
   const count = cart.length;
   document.getElementById('cartCount').textContent = count;
   document.getElementById('cartSubtitle').textContent = `${count} item${count !== 1 ? 's' : ''}`;
@@ -523,6 +524,7 @@ function showToast(message) {
   setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity .3s'; setTimeout(() => t.remove(), 300); }, 2000);
 }
 
+updateCartUI();
 loadProduct();
 </script>
 </body>
