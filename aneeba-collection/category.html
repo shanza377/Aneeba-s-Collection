@@ -37,6 +37,9 @@
         <a href="index.html" class="hidden sm:flex items-center gap-1 text-[#C2185B] font-medium text-sm hover:underline">
           ← Home
         </a>
+        <a href="track.html" class="hidden sm:flex items-center gap-1 text-xs font-medium text-gray-500 hover:text-[#C2185B] transition border border-gray-200 hover:border-[#C2185B] px-3 py-1.5 rounded-full">
+          📦 Track
+        </a>
         <button id="cartBtn" class="relative p-2 hover:bg-[#FFF0F5] rounded-full transition">
           <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 7H4L5 9z"/></svg>
           <span id="cartCount" class="absolute -top-0.5 -right-0.5 bg-[#C2185B] text-white text-xs rounded-full w-4 h-4 flex items-center justify-center font-semibold">0</span>
@@ -182,7 +185,7 @@
 
 <script type="module">
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, query, where, orderBy, addDoc, serverTimestamp } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, where, orderBy, addDoc, updateDoc, increment, serverTimestamp } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -240,25 +243,29 @@ function productCard(p) {
         ${isNew(p) ? `<span class="absolute top-2 left-2 bg-[#C2185B] text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">NEW</span>` : ''}
         ${p.discount ? `<span class="absolute top-2 right-2 bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">${p.discount}% OFF</span>` : ''}
         ${p.images.length > 1 ? `<span class="absolute bottom-2 right-2 bg-black/50 text-white text-[10px] px-1.5 py-0.5 rounded-full">+${p.images.length - 1}</span>` : ''}
+        ${p.stock === 0 ? `<div class="absolute inset-0 bg-black/30 flex items-center justify-center"><span class="bg-white text-gray-700 text-xs font-bold px-3 py-1 rounded-full">Out of Stock</span></div>` : ''}
       </a>
       <div class="p-3 sm:p-4">
         <a href="product.html?id=${p.id}">
           <h3 class="font-semibold text-sm text-gray-800 line-clamp-1 mb-0.5 hover:text-[#C2185B] transition">${p.name}</h3>
         </a>
         ${p.description ? `<p class="text-[11px] text-gray-400 line-clamp-2 mb-2">${p.description}</p>` : ''}
-        <div class="flex items-center gap-2 mb-3">
+        <div class="flex items-center gap-2 mb-3 flex-wrap">
           <span class="text-[#C2185B] font-bold text-base">Rs ${dp ?? p.price}</span>
           ${dp ? `<span class="text-gray-300 line-through text-xs">Rs ${p.price}</span>` : ''}
+          ${p.stock != null && p.stock > 0 && p.stock <= 5 ? `<span class="text-amber-600 text-[10px] font-semibold">Only ${p.stock} left!</span>` : ''}
         </div>
         <div class="flex gap-2">
           <a href="product.html?id=${p.id}"
             class="flex-1 border border-[#C2185B] text-[#C2185B] py-2 rounded-xl hover:bg-[#FFF0F5] text-xs sm:text-sm font-semibold transition text-center">
             View
           </a>
-          <button onclick='addToCart(${JSON.stringify(p).replace(/'/g,"&apos;")})'
-            class="flex-1 bg-[#C2185B] text-white py-2 rounded-xl hover:bg-[#AD1457] text-xs sm:text-sm font-semibold transition">
-            Add to Cart
-          </button>
+          ${p.stock === 0
+            ? `<button disabled class="flex-1 bg-gray-200 text-gray-400 py-2 rounded-xl text-xs sm:text-sm font-semibold cursor-not-allowed">Sold Out</button>`
+            : `<button onclick='addToCart(${JSON.stringify(p).replace(/'/g,"&apos;")})'
+                class="flex-1 bg-[#C2185B] text-white py-2 rounded-xl hover:bg-[#AD1457] text-xs sm:text-sm font-semibold transition">
+                Add to Cart
+              </button>`}
         </div>
       </div>
     </div>`;
@@ -401,8 +408,13 @@ document.getElementById('orderForm').onsubmit = async (e) => {
         id: item.id, name: item.name, category: item.category,
         price: discPrice(item) ?? item.price, image: item.images[0]
       })),
-      total, status: 'new', createdAt: serverTimestamp()
+      total, status: 'pending', createdAt: serverTimestamp()
     });
+    for (const item of items) {
+      if (item.id) {
+        try { await updateDoc(doc(db, "products", item.id), { stock: increment(-1) }); } catch(e) {}
+      }
+    }
   } catch (err) { console.error('Order save error:', err); }
 
   let msg = `🛍️ *New Order – Aneeba's Collection*\n\n`;
@@ -413,6 +425,7 @@ document.getElementById('orderForm').onsubmit = async (e) => {
     msg += `${i + 1}. ${item.name} – Rs ${discPrice(item) ?? item.price}\n`;
   });
   msg += `\n*Total: Rs ${total}*`;
+  msg += `\n\n📦 *Track order:* ${window.location.origin}/track.html?phone=${encodeURIComponent(phone)}`;
 
   orderModal.classList.add('hidden');
   cart = []; updateCartUI();
