@@ -14,7 +14,7 @@ export default defineConfig({
         main:     resolve(__dirname, 'aneeba-collection/index.html'),
         category: resolve(__dirname, 'aneeba-collection/category.html'),
         product:  resolve(__dirname, 'aneeba-collection/product.html'),
-        admin:    resolve(__dirname, 'aneeba-collection/admin.html'),
+        admin:    resolve(__dirname, 'aneeba-collection/ac-manage.html'),
         track:    resolve(__dirname, 'aneeba-collection/track.html'),
       },
     },
