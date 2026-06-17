@@ -193,14 +193,14 @@
                 class="bg-white shadow-2xl rounded-2xl overflow-hidden border border-pink-50"
               >
                 <a
-                  href="category.html?cat=HandBags"
+                  href="category.html?cat=Handbags"
                   class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm"
-                  >👜 HandBags</a
+                  >👜 Handbags</a
                 >
                 <a
-                  href="category.html?cat=Jwellery"
+                  href="category.html?cat=Jewellery"
                   class="flex items-center gap-2 px-4 py-3 hover:bg-[#FFF0F5] hover:text-[#C2185B] transition text-sm"
-                  >💍 Jwellery</a
+                  >💍 Jewellery</a
                 >
                 <a
                   href="category.html?cat=Fragrance"
@@ -381,14 +381,14 @@
             </button>
             <div id="sub-accessories" class="hidden pl-5 space-y-1 pb-2">
               <a
-                href="category.html?cat=HandBags"
+                href="category.html?cat=Handbags"
                 class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]"
-                >HandBags</a
+                >Handbags</a
               >
               <a
-                href="category.html?cat=Jwellery"
+                href="category.html?cat=Jewellery"
                 class="block py-2 text-sm text-gray-600 hover:text-[#C2185B]"
-                >Jwellery</a
+                >Jewellery</a
               >
               <a
                 href="category.html?cat=Fragrance"
@@ -961,11 +961,38 @@
       </div>
     </footer>
 
+    <!-- Mobile Bottom Nav -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-pink-100 z-30 shadow-[0_-2px_10px_rgba(194,24,91,0.08)]">
+      <div class="flex items-center justify-around py-2 px-2">
+        <a href="index.html" class="flex flex-col items-center gap-0.5 text-[#C2185B] min-w-[48px]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span class="text-[9px] font-semibold">Home</span>
+        </a>
+        <a href="category.html?cat=Ready To Wear" class="flex flex-col items-center gap-0.5 text-gray-400 hover:text-[#C2185B] transition min-w-[48px]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 7H4L5 9z"/></svg>
+          <span class="text-[9px] font-medium">Shop</span>
+        </a>
+        <a href="track.html" class="flex flex-col items-center gap-0.5 text-gray-400 hover:text-[#C2185B] transition min-w-[48px]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          <span class="text-[9px] font-medium">Track</span>
+        </a>
+        <button id="mobileNavCart" class="flex flex-col items-center gap-0.5 text-gray-400 hover:text-[#C2185B] transition min-w-[48px] relative">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          <span id="mobileNavCartCount" class="absolute -top-0.5 right-5 bg-[#C2185B] text-white text-[8px] rounded-full w-3.5 h-3.5 flex items-center justify-center font-bold hidden">0</span>
+          <span class="text-[9px] font-medium">Cart</span>
+        </button>
+        <a href="https://wa.me/923226135815" target="_blank" class="flex flex-col items-center gap-0.5 text-[#25D366] min-w-[48px]">
+          <svg class="w-5 h-5 fill-[#25D366]" viewBox="0 0 32 32"><path d="M16.001 2.667c-7.373 0-13.334 5.961-13.334 13.333 0 2.352.614 4.646 1.781 6.667l-1.875 6.854 7.021-1.84c1.979 1.083 4.213 1.652 6.407 1.652 7.373 0 13.333-5.961 13.333-13.333s-5.96-13.333-13.333-13.333zm0 24c-1.994 0-3.946-.521-5.667-1.507l-.406-.233-4.166 1.093 1.114-4.062-.264-.417c-1.081-1.71-1.652-3.678-1.652-5.707 0-5.894 4.773-10.667 10.667-10.667s10.667 4.773 10.667 10.667-4.773 10.667-10.667 10.667zm5.84-7.973c-.32-.16-1.893-.933-2.187-.96-.293-.053-.507-.08-.72.08s-.827.96-1.013 1.157c-.187.213-.373.24-.693.08-.32-.16-1.347-.493-2.56-1.573-.947-.84-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.144-.16.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.373-.26-.62-.533-.533-.72-.547l-.613-.013c-.213 0-.56.08-.853.4s-1.12 1.093-1.12 2.667 1.147 3.093 1.307 3.307c.16.213 2.253 3.44 5.467 4.827.763.333 1.36.533 1.827.693.773.24 1.467.213 2.02.133.613-.08 1.893-.773 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"/></svg>
+          <span class="text-[9px] font-medium">WhatsApp</span>
+        </a>
+      </div>
+    </nav>
+
     <!-- Floating WhatsApp -->
     <a
       href="https://wa.me/923226135815"
       target="_blank"
-      class="fixed bottom-6 right-6 bg-[#25D366] hover:bg-[#1ebe5d] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl z-40 transition transform hover:scale-110"
+      class="hidden md:flex fixed bottom-6 right-6 bg-[#25D366] hover:bg-[#1ebe5d] text-white w-14 h-14 rounded-full items-center justify-center shadow-xl z-40 transition transform hover:scale-110"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -979,32 +1006,20 @@
     </a>
 
     <script type="module">
-      import { initializeApp } from "firebase/app";
+      import { db } from "./src/firebase.js";
       import {
-        getFirestore,
         collection,
         getDocs,
+        getDoc,
         query,
         orderBy,
         limit,
-        getDoc,
         doc,
         addDoc,
         updateDoc,
         increment,
         serverTimestamp,
       } from "firebase/firestore";
-
-      const firebaseConfig = {
-        apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-        authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-        projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-        storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-        messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-        appId: import.meta.env.VITE_FIREBASE_APP_ID,
-      };
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
 
       let cart = JSON.parse(localStorage.getItem('ac_cart') || '[]');
       let allProducts = [];
@@ -1189,6 +1204,8 @@
         localStorage.setItem('ac_cart', JSON.stringify(cart));
         const count = cart.length;
         document.getElementById("cartCount").textContent = count;
+        const mnc = document.getElementById("mobileNavCartCount");
+        if (mnc) { mnc.textContent = count; mnc.classList.toggle("hidden", count === 0); }
         document.getElementById("cartSubtitle").textContent =
           `${count} item${count !== 1 ? "s" : ""}`;
 
@@ -1435,6 +1452,11 @@
           );
         };
       }
+
+      document.getElementById("mobileNavCart").onclick = () => {
+        document.getElementById("cartSidebar").classList.remove("hidden");
+        document.getElementById("cartOverlay").classList.remove("hidden");
+      };
 
       updateCartUI();
       loadProducts();
